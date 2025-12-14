@@ -1,0 +1,62 @@
+{
+  "quantitativeImpact": [
+    {
+      "id": "school",
+      "title": "覆盖学校数",
+      "value": "500+",
+      "unit": "所",
+      "description": "从2024年试点100所，到2025年全面覆盖深圳500+学校"
+    },
+    {
+      "id": "enterprise",
+      "title": "企业参与率",
+      "value": "85%",
+      "unit": "",
+      "description": "企业深度参与率从35%提升至85%（深圳教育局2024数据）"
+    },
+    {
+      "id": "project",
+      "title": "项目转化率",
+      "value": "70%",
+      "unit": "",
+      "description": "学生项目实际解决企业问题的比例从42%提升至70%"
+    },
+    {
+      "id": "student",
+      "title": "学生创新力",
+      "value": "90%",
+      "unit": "",
+      "description": "85%学生表示PBL提升了创新思维（2024年调研）"
+    }
+  ],
+  "socialImpactMap": [
+    {
+      "id": "economy",
+      "title": "经济价值",
+      "description": "2025年预计孵化50+学生创新项目，对接企业需求",
+      "icon": "💰",
+      "color": "#FF6B6B"
+    },
+    {
+      "id": "community",
+      "title": "社区联动",
+      "description": "学校-企业-社区三方协同，覆盖深圳10+社区",
+      "icon": "🏘️",
+      "color": "#4ECDC4"
+    },
+    {
+      "id": "education",
+      "title": "教育改革",
+      "description": "形成可复制的PBL2.0模式，辐射全国",
+      "icon": "📚",
+      "color": "#FFA07A"
+    },
+    {
+      "id": "talent",
+      "title": "人才培育",
+      "description": "培养10,000+具备产业思维的毕业生",
+      "icon": "🎓",
+      "color": "#45B7D2"
+    }
+  ]
+}
