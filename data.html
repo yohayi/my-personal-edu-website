@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深圳PBL2.0 | 核心数据统计与分析</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 顶部导航栏（当前页高亮） -->
+    <header class="nav-bar">
+        <div class="logo">1Hub</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="background.html">研究背景</a></li>
+                <li><a href="data.html" class="active">核心数据</a></li>
+                <li><a href="case-study.html">典型案例</a></li>
+                <li><a href="shenzhen-practice.html">深圳实践</a></li>
+                <li><a href="plan.html">行动方案</a></li>
+                <li><a href="outcome.html">预期成果</a></li>
+                <li><a href="conclusion.html">结语</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 数据主内容区 -->
+    <main class="data-content">
+        <h1>核心数据统计与分析</h1>
+        
+        <!-- 1. 动态趋势图表（纯CSS实现） -->
+        <section class="chart-section">
+            <h2>📈 高中毕业生去向趋势（2020-2024）</h2>
+            <div class="chart-container">
+                <div class="chart-year">
+                    <span>2020</span>
+                    <div class="chart-bar" style="height: 45.2%;">普通高校 45.20%</div>
+                    <div class="chart-bar" style="height: 38.7%;">职业院校 38.70%</div>
+                    <div class="chart-bar" style="height: 10.1%;">直接就业 10.10%</div>
+                </div>
+                <div class="chart-year">
+                    <span>2024</span>
+                    <div class="chart-bar" style="height: 48.3%; background: #2563EB;">普通高校 48.30%</div>
+                    <div class="chart-bar" style="height: 35.9%; background: #3b82f6;">职业院校 35.90%</div>
+                    <div class="chart-bar" style="height: 10.8%; background: #60a5fa;">直接就业 10.80%</div>
+                </div>
+            </div>
+            <div class="chart-legend">
+                <div class="legend-item"><span class="color-box" style="background: #2563EB;"></span>普通高校（↑+3.1%）</div>
+                <div class="legend-item"><span class="color-box" style="background: #3b82f6;"></span>职业院校（↓-2.8%）</div>
+                <div class="legend-item"><span class="color-box" style="background: #60a5fa;"></span>直接就业（↑+0.7%）</div>
+            </div>
+            <p class="chart-note">数据来源：教育部2024年教育统计年鉴 | 2024年普通高校占比首次突破48%</p>
+        </section>
+
+        <!-- 2. 区域对比表格（高亮深圳） -->
+        <section class="table-section">
+            <h2>📊 教育资源区域分布对比</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>地区</th>
+                        <th>投入指数</th>
+                        <th>城乡资源比</th>
+                        <th>与全国均值对比</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>北京</td>
+                        <td>92.00</td>
+                        <td>2.80:1</td>
+                        <td>+50.2%</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>深圳</td>
+                        <td>82.30</td>
+                        <td>2.20:1</td>
+                        <td>+34.5%</td>
+                    </tr>
+                    <tr>
+                        <td>上海</td>
+                        <td>87.50</td>
+                        <td>2.50:1</td>
+                        <td>+43.7%</td>
+                    </tr>
+                    <tr>
+                        <td>贵州</td>
+                        <td>60.00</td>
+                        <td>3.20:1</td>
+                        <td>-15.8%</td>
+                    </tr>
+                    <tr>
+                        <td>全国均值</td>
+                        <td>61.20</td>
+                        <td>2.50:1</td>
+                        <td>0%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="table-note">💡 深圳城乡资源比（2.20:1）显著优于全国均值（2.50:1），体现区域均衡优势</p>
+        </section>
+
+        <!-- 3. 核心问题速览（卡片式设计） -->
+        <section class="key-points">
+            <h2>🔑 关键问题洞察</h2>
+            <div class="point-cards">
+                <div class="point-card">
+                    <div class="point-icon">⚠️</div>
+                    <h3>教育衔接问题</h3>
+                    <p>35.90%高中生进入职业院校，但社会认可度不足（<span class="highlight-text">仅62.3%</span>）</p>
+                </div>
+                <div class="point-card">
+                    <div class="point-icon">🧠</div>
+                    <h3>心理健康问题</h3>
+                    <p>学生焦虑比例十年上升44.4%（<span class="highlight-text">24.10%→34.70%</span>）</p>
+                </div>
+                <div class="point-card">
+                    <div class="point-icon">⚖️</div>
+                    <h3>资源分配问题</h3>
+                    <p>北京投入指数（92.00）是贵州（60.00）的<span class="highlight-text">1.5倍</span></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>&copy; 2025 社会教育改革研究组 | 数据来源：教育部2024年教育统计年鉴</p>
+        <div class="data-source">
+            <a href="https://www.moe.gov.cn/jyb_sjzl/sjzl_fztj/" target="_blank">教育部2024年统计年鉴</a> | 
+            <a href="#">下载完整数据集</a>
+        </div>
+    </footer>
+</body>
+</html>
