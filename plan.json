@@ -1,0 +1,28 @@
+{
+  "title": "深圳PBL2.0深化行动方案",
+  "intro": "2024-2025年分三阶段推进，目标覆盖500所学校，企业参与率提升至85%",
+  "currentProgress": 35,
+  "stages": [
+    {
+      "id": "stage1",
+      "title": "试点启动（2024Q1-Q2）",
+      "period": "2024年1月-6月",
+      "target": "覆盖100所学校，企业共建10个核心项目",
+      "status": "completed"
+    },
+    {
+      "id": "stage2",
+      "title": "深化推广（2024Q3-Q4）",
+      "period": "2024年7月-12月",
+      "target": "覆盖300所学校，建立企业合作机制",
+      "status": "in-progress"
+    },
+    {
+      "id": "stage3",
+      "title": "全面覆盖（2025Q1-Q4）",
+      "period": "2025年1月-12月",
+      "target": "覆盖500所学校，形成可复制模式",
+      "status": "upcoming"
+    }
+  ]
+}
