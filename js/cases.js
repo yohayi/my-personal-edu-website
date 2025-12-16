@@ -129,6 +129,109 @@ const casesData = [
             skillMatch: 80
         }
     }
+    // 新增国内案例 - 职业教育
+    {
+        id: 9,
+        title: "浙江温州工学一体化技能人才培养",
+        category: "vocational",
+        country: "中国",
+        description: "系统构建‘政企校研’协同的产教评生态链，创新‘校中厂’、‘厂中校’双轨模式，将企业真实项目融入教学全周期，破解学用脱节难题。",
+        impact: "学生平均就业率达98.4%，为当地电气、鞋服等支柱产业输送逾10万名技能人才，高技能人才年新增超10万人。",
+        tags: ["工学一体", "产教融合", "技能生态链"],
+        color: "blue",
+        icon: "fas fa-industry",
+        stats: {
+            satisfaction: 88,
+            employment: 98,
+            skillMatch: 90
+        }
+    },
+    // 新增国内案例 - 基础教育
+    {
+        id: 10,
+        title: "上海市义务教育小班化教学改革",
+        category: "basic",
+        country: "中国",
+        description: "在中心城区部分学校打破‘插秧式’传统课堂布局，通过物理空间改造、分组围坐、分层教学和数字化评价体系，实现教师从‘课程实施者’到‘学生成长设计师’的角色转变。",
+        impact: "试点学校课堂互动质量和学生参与度显著提升，相关成果被纳入《教育强国建设规划纲要》，形成可复制的‘上海经验’。",
+        tags: ["小班化", "因材施教", "课堂改革"],
+        color: "orange",
+        icon: "fas fa-users",
+        stats: {
+            satisfaction: 90,
+            employment: 0,
+            skillMatch: 85
+        }
+    },
+    // 新增国内案例 - 数字教育
+    {
+        id: 11,
+        title: "湖北教育数字化生态重塑",
+        category: "digital",
+        country: "中国",
+        description: "作为国家智慧教育平台整省试点，通过AI、VR、数字孪生等技术构建‘三维教育场’，为山区学生提供沉浸式学习体验，并利用平台数据实现个性化教学与优质资源跨区域共享。",
+        impact: "全省中小学多媒体教学设备覆盖率100%，智慧教育平台用户活跃度位居全国前列，新技术转化教学内容时间缩短85%。",
+        tags: ["人工智能", "数字孪生", "教育公平"],
+        color: "cyan",
+        icon: "fas fa-laptop-code",
+        stats: {
+            satisfaction: 86,
+            employment: 89,
+            skillMatch: 82
+        }
+    },
+    // 新增国外案例 - 职业教育（瑞士）
+    {
+        id: 12,
+        title: "瑞士职业教育和培训（VET）体系",
+        category: "vocational",
+        country: "瑞士",
+        description: "全球公认的黄金标准，约三分之二的初中毕业生选择进入VET体系。采用‘双轨制’，学生在企业（承担大部分培训成本）当学徒，同时在职业学校学习理论知识，联邦政府确保全国标准统一。",
+        impact: "青年失业率长期维持在5%以下的极低水平，确保了经济各领域拥有稳定、高素质的技能人才供应，企业参与度超过90%。",
+        tags: ["双轨制", "企业主导", "全国标准"],
+        color: "blue",
+        icon: "fas fa-user-tie",
+        stats: {
+            satisfaction: 95,
+            employment: 96,
+            skillMatch: 93
+        }
+    },
+    // 新增国外案例 - 课程与教学（美国）
+    {
+        id: 13,
+        title: "美国High Tech High项目式学习网络",
+        category: "curriculum",
+        country: "美国",
+        description: "起源于加州的一所特许学校，现已发展为学校网络。完全取消传统学科分隔，所有学习围绕跨学科、真实世界的长期项目展开，学生通过公开展示作品来完成学业评价。",
+        impact: "项目学校的学生，尤其是来自低收入家庭的学生，在大学持续深造率和毕业率上显著高于地区平均水平，创造力与合作能力备受赞誉。",
+        tags: ["项目式学习", "跨学科", "作品评价"],
+        color: "purple",
+        icon: "fas fa-project-diagram",
+        stats: {
+            satisfaction: 91,
+            employment: 88,
+            skillMatch: 87
+        }
+    },
+    // 新增国外案例 - 教育政策（芬兰）
+    {
+        id: 14,
+        title: "芬兰基于信任的教师专业自主模式",
+        category: "policy",
+        country: "芬兰",
+        description: "国家仅提供宽松的课程框架，教师拥有极大的教学设计与教材选择自主权。其基础是经过严格筛选（仅录取10%申请者）和高质量硕士层次培养的教师队伍，社会赋予教师高度专业信任。",
+        impact: "在PISA等国际评估中持续名列前茅，同时学生学习幸福感强、课时短，形成了‘高质量、低压力’的独特教育生态。",
+        tags: ["教师自主", "专业信任", "高质量培养"],
+        color: "green",
+        icon: "fas fa-chalkboard-teacher",
+        stats: {
+            satisfaction: 96,
+            employment: 92,
+            skillMatch: 89
+        }
+    }
+
 ];
 
 // 初始化案例展示
