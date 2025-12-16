@@ -1,1307 +1,1691 @@
-// 案例JavaScript文件
-
-const casesData = [
-    {
-        id: 1,
-        title: "德国双元制职业教育现代化改革",
-        category: "vocational",
-        country: "德国",
-        description: "企业深度参与、标准化培训条例、跨企业培训中心的模式创新，实现了学校与企业的无缝对接。",
-        impact: "青年失业率降至5.2%，企业满意度达87%，毕业生就业率达到94%",
-        tags: ["职业教育", "校企合作", "德国模式"],
-        color: "blue",
-        icon: "fas fa-industry",
-        stats: {
-            satisfaction: 87,
-            employment: 94,
-            skillMatch: 76
-        }
-    },
-    {
-        id: 2,
-        title: "芬兰现象式学习（Phenomenon-based Learning）",
-        category: "curriculum",
-        country: "芬兰",
-        description: "打破学科界限，以真实世界问题为核心组织课程内容，培养学生综合解决问题的能力。",
-        impact: "学生问题解决能力提升35%，跨学科素养显著改善，创造力指数提高42%",
-        tags: ["课程改革", "跨学科", "创新教学"],
-        color: "purple",
-        icon: "fas fa-lightbulb",
-        stats: {
-            satisfaction: 92,
-            employment: 88,
-            skillMatch: 85
-        }
-    },
-    {
-        id: 3,
-        title: "新加坡技能创前程（SkillsFuture）计划",
-        category: "policy",
-        country: "新加坡",
-        description: "全民终身学习体系，政府资助个人技能提升，建立技能认证与职业发展衔接机制。",
-        impact: "成人参与率62%，技能提升认证覆盖率75%，就业匹配度提高28%",
-        tags: ["终身学习", "政策创新", "技能认证"],
-        color: "green",
-        icon: "fas fa-landmark",
-        stats: {
-            satisfaction: 85,
-            employment: 90,
-            skillMatch: 82
-        }
-    },
-    {
-        id: 4,
-        title: "加拿大体验式学习框架",
-        category: "basic",
-        country: "加拿大",
-        description: "将工作体验融入基础教育，从幼儿园到高中阶段逐步引入职业探索与实践机会。",
-        impact: "学生职业认知度提升56%，学习动机增强41%，辍学率降低23%",
-        tags: ["基础教育", "职业探索", "实践学习"],
-        color: "orange",
-        icon: "fas fa-school",
-        stats: {
-            satisfaction: 88,
-            employment: 86,
-            skillMatch: 79
-        }
-    },
-    {
-        id: 5,
-        title: "日本超级全球化高中计划",
-        category: "curriculum",
-        country: "日本",
-        description: "培养全球化领导力的特色高中，全英文授课，强化国际交流与合作项目。",
-        impact: "学生英语能力提升73%，国际升学率65%，跨文化能力显著增强",
-        tags: ["全球化", "特色学校", "语言教学"],
-        color: "red",
-        icon: "fas fa-globe",
-        stats: {
-            satisfaction: 84,
-            employment: 89,
-            skillMatch: 81
-        }
-    },
-    {
-        id: 6,
-        title: "澳大利亚职业教育与培训包体系",
-        category: "vocational",
-        country: "澳大利亚",
-        description: "行业主导的能力标准开发，灵活的学习路径，全国统一的资格认证框架。",
-        impact: "行业标准覆盖率95%，培训质量满意度88%，技能转化率72%",
-        tags: ["职业标准", "灵活学习", "认证体系"],
-        color: "blue",
-        icon: "fas fa-certificate",
-        stats: {
-            satisfaction: 86,
-            employment: 91,
-            skillMatch: 78
-        }
-    },
-    {
-        id: 7,
-        title: "荷兰个性化学习路径",
-        category: "basic",
-        country: "荷兰",
-        description: "基于学生能力与兴趣的个性化课程设计，灵活的学习进度安排与导师制支持。",
-        impact: "学生参与度提升47%，学习效率提高39%，个性化支持满意度92%",
-        tags: ["个性化", "灵活学习", "导师制"],
-        color: "orange",
-        icon: "fas fa-user-graduate",
-        stats: {
-            satisfaction: 91,
-            employment: 85,
-            skillMatch: 83
-        }
-    },
-    {
-        id: 8,
-        title: "韩国数字化转型教育战略",
-        category: "digital",
-        country: "韩国",
-        description: "全面推动教育数字化，智慧校园建设，人工智能辅助教学，数字素养普及。",
-        impact: "数字化教学覆盖率98%，教师数字素养提升65%，学生学习效率提高31%",
-        tags: ["数字化", "人工智能", "智慧教育"],
-        color: "cyan",
-        icon: "fas fa-laptop-code",
-        stats: {
-            satisfaction: 83,
-            employment: 87,
-            skillMatch: 80
-        }
-    }
-    // 新增国内案例 - 职业教育
-    {
-        id: 9,
-        title: "浙江温州工学一体化技能人才培养",
-        category: "vocational",
-        country: "中国",
-        description: "系统构建‘政企校研’协同的产教评生态链，创新‘校中厂’、‘厂中校’双轨模式，将企业真实项目融入教学全周期，破解学用脱节难题。",
-        impact: "学生平均就业率达98.4%，为当地电气、鞋服等支柱产业输送逾10万名技能人才，高技能人才年新增超10万人。",
-        tags: ["工学一体", "产教融合", "技能生态链"],
-        color: "blue",
-        icon: "fas fa-industry",
-        stats: {
-            satisfaction: 88,
-            employment: 98,
-            skillMatch: 90
-        }
-    },
-    // 新增国内案例 - 基础教育
-    {
-        id: 10,
-        title: "上海市义务教育小班化教学改革",
-        category: "basic",
-        country: "中国",
-        description: "在中心城区部分学校打破‘插秧式’传统课堂布局，通过物理空间改造、分组围坐、分层教学和数字化评价体系，实现教师从‘课程实施者’到‘学生成长设计师’的角色转变。",
-        impact: "试点学校课堂互动质量和学生参与度显著提升，相关成果被纳入《教育强国建设规划纲要》，形成可复制的‘上海经验’。",
-        tags: ["小班化", "因材施教", "课堂改革"],
-        color: "orange",
-        icon: "fas fa-users",
-        stats: {
-            satisfaction: 90,
-            employment: 0,
-            skillMatch: 85
-        }
-    },
-    // 新增国内案例 - 数字教育
-    {
-        id: 11,
-        title: "湖北教育数字化生态重塑",
-        category: "digital",
-        country: "中国",
-        description: "作为国家智慧教育平台整省试点，通过AI、VR、数字孪生等技术构建‘三维教育场’，为山区学生提供沉浸式学习体验，并利用平台数据实现个性化教学与优质资源跨区域共享。",
-        impact: "全省中小学多媒体教学设备覆盖率100%，智慧教育平台用户活跃度位居全国前列，新技术转化教学内容时间缩短85%。",
-        tags: ["人工智能", "数字孪生", "教育公平"],
-        color: "cyan",
-        icon: "fas fa-laptop-code",
-        stats: {
-            satisfaction: 86,
-            employment: 89,
-            skillMatch: 82
-        }
-    },
-    // 新增国外案例 - 职业教育（瑞士）
-    {
-        id: 12,
-        title: "瑞士职业教育和培训（VET）体系",
-        category: "vocational",
-        country: "瑞士",
-        description: "全球公认的黄金标准，约三分之二的初中毕业生选择进入VET体系。采用‘双轨制’，学生在企业（承担大部分培训成本）当学徒，同时在职业学校学习理论知识，联邦政府确保全国标准统一。",
-        impact: "青年失业率长期维持在5%以下的极低水平，确保了经济各领域拥有稳定、高素质的技能人才供应，企业参与度超过90%。",
-        tags: ["双轨制", "企业主导", "全国标准"],
-        color: "blue",
-        icon: "fas fa-user-tie",
-        stats: {
-            satisfaction: 95,
-            employment: 96,
-            skillMatch: 93
-        }
-    },
-    // 新增国外案例 - 课程与教学（美国）
-    {
-        id: 13,
-        title: "美国High Tech High项目式学习网络",
-        category: "curriculum",
-        country: "美国",
-        description: "起源于加州的一所特许学校，现已发展为学校网络。完全取消传统学科分隔，所有学习围绕跨学科、真实世界的长期项目展开，学生通过公开展示作品来完成学业评价。",
-        impact: "项目学校的学生，尤其是来自低收入家庭的学生，在大学持续深造率和毕业率上显著高于地区平均水平，创造力与合作能力备受赞誉。",
-        tags: ["项目式学习", "跨学科", "作品评价"],
-        color: "purple",
-        icon: "fas fa-project-diagram",
-        stats: {
-            satisfaction: 91,
-            employment: 88,
-            skillMatch: 87
-        }
-    },
-    // 新增国外案例 - 教育政策（芬兰）
-    {
-        id: 14,
-        title: "芬兰基于信任的教师专业自主模式",
-        category: "policy",
-        country: "芬兰",
-        description: "国家仅提供宽松的课程框架，教师拥有极大的教学设计与教材选择自主权。其基础是经过严格筛选（仅录取10%申请者）和高质量硕士层次培养的教师队伍，社会赋予教师高度专业信任。",
-        impact: "在PISA等国际评估中持续名列前茅，同时学生学习幸福感强、课时短，形成了‘高质量、低压力’的独特教育生态。",
-        tags: ["教师自主", "专业信任", "高质量培养"],
-        color: "green",
-        icon: "fas fa-chalkboard-teacher",
-        stats: {
-            satisfaction: 96,
-            employment: 92,
-            skillMatch: 89
-        }
-    }
-
-];
-
-// 初始化案例展示
-function initCases() {
-    const casesContainer = document.getElementById('casesContainer');
-    casesContainer.innerHTML = '';
-    
-    casesData.forEach((caseItem, index) => {
-        const caseCard = createCaseCard(caseItem, index);
-        casesContainer.appendChild(caseCard);
-    });
-    
-    // 初始化动画
-    animateCaseCards();
-}
-
-// 创建案例卡片
-function createCaseCard(caseItem, index) {
-    const card = document.createElement('div');
-    card.className = `case-card glass animate-on-scroll`;
-    card.setAttribute('data-animation', 'fade-up');
-    card.setAttribute('data-delay', (index % 4) * 100);
-    card.setAttribute('data-category', caseItem.category);
-    
-    // 卡片颜色类
-    const colorClass = `card-color-${caseItem.color}`;
-    
-    card.innerHTML = `
-        <div class="case-card-header">
-            <div class="case-country">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>${caseItem.country}</span>
-            </div>
-            <div class="case-category ${colorClass}">
-                <i class="${caseItem.icon}"></i>
-                <span>${getCategoryLabel(caseItem.category)}</span>
-            </div>
-        </div>
-        
-        <h3 class="case-title">${caseItem.title}</h3>
-        
-        <p class="case-description">${caseItem.description}</p>
-        
-        <div class="case-impact">
-            <div class="impact-header">
-                <i class="fas fa-chart-line"></i>
-                <span>主要成效</span>
-            </div>
-            <p>${caseItem.impact}</p>
-        </div>
-        
-        <div class="case-stats">
-            <div class="case-stat">
-                <div class="stat-circle small" data-value="${caseItem.stats.satisfaction}">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-                        <circle class="circle-progress-bar" cx="50" cy="50" r="40"></circle>
-                    </svg>
-                    <div class="circle-value">${caseItem.stats.satisfaction}%</div>
-                </div>
-                <div class="stat-label">满意度</div>
-            </div>
-            <div class="case-stat">
-                <div class="stat-circle small" data-value="${caseItem.stats.employment}">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-                        <circle class="circle-progress-bar" cx="50" cy="50" r="40"></circle>
-                    </svg>
-                    <div class="circle-value">${caseItem.stats.employment}%</div>
-                </div>
-                <div class="stat-label">就业率</div>
-            </div>
-            <div class="case-stat">
-                <div class="stat-circle small" data-value="${caseItem.stats.skillMatch}">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-                        <circle class="circle-progress-bar" cx="50" cy="50" r="40"></circle>
-                    </svg>
-                    <div class="circle-value">${caseItem.stats.skillMatch}%</div>
-                </div>
-                <div class="stat-label">技能匹配</div>
-            </div>
-        </div>
-        
-        <div class="case-tags">
-            ${caseItem.tags.map(tag => `<span class="case-tag">${tag}</span>`).join('')}
-        </div>
-        
-        <div class="case-actions">
-            <button class="case-detail-btn" data-case-id="${caseItem.id}">
-                <i class="fas fa-search"></i>
-                <span>查看详情</span>
-            </button>
-            <button class="case-compare-btn" data-case-id="${caseItem.id}">
-                <i class="fas fa-balance-scale"></i>
-                <span>加入对比</span>
-            </button>
-        </div>
-        
-        <div class="card-glow"></div>
-    `;
-    
-    // 添加事件监听器
-    const detailBtn = card.querySelector('.case-detail-btn');
-    const compareBtn = card.querySelector('.case-compare-btn');
-    
-    detailBtn.addEventListener('click', () => showCaseDetail(caseItem.id));
-    compareBtn.addEventListener('click', () => addToComparison(caseItem.id));
-    
-    return card;
-}
-
-// 获取分类标签
-function getCategoryLabel(category) {
-    const labels = {
-        'vocational': '职业教育',
-        'basic': '基础教育',
-        'curriculum': '课程改革',
-        'policy': '政策创新',
-        'digital': '数字转型'
-    };
-    return labels[category] || category;
-}
-
-// 筛选案例
-function filterCases(category) {
-    const caseCards = document.querySelectorAll('.case-card');
-    const casesGrid = document.getElementById('casesContainer');
-    
-    // 添加筛选动画
-    casesGrid.classList.add('filtering');
-    
-    setTimeout(() => {
-        caseCards.forEach(card => {
-            if (category === 'all' || card.getAttribute('data-category') === category) {
-                card.style.display = 'block';
-                card.classList.add('animate-zoom-in');
-            } else {
-                card.style.display = 'none';
-            }
-        });
-        
-        casesGrid.classList.remove('filtering');
-    }, 300);
-}
-
-// 显示案例详情
-function showCaseDetail(caseId) {
-    const caseItem = casesData.find(c => c.id === caseId);
-    if (!caseItem) return;
-    
-    // 创建模态框
-    const modal = createCaseModal(caseItem);
-    document.body.appendChild(modal);
-    
-    // 显示模态框
-    setTimeout(() => {
-        modal.classList.add('show');
-    }, 10);
-    
-    // 添加关闭功能
-    const closeBtn = modal.querySelector('.modal-close');
-    closeBtn.addEventListener('click', () => {
-        modal.classList.remove('show');
-        setTimeout(() => {
-            modal.remove();
-        }, 300);
-    });
-    
-    // 点击外部关闭
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('show');
-            setTimeout(() => {
-                modal.remove();
-            }, 300);
-        }
-    });
-}
-
-// 创建案例模态框
-function createCaseModal(caseItem) {
-    const modal = document.createElement('div');
-    modal.className = 'case-modal';
-    
-    modal.innerHTML = `
-        <div class="modal-backdrop"></div>
-        <div class="modal-container glass">
-            <button class="modal-close">
-                <i class="fas fa-times"></i>
-            </button>
-            
-            <div class="modal-header">
-                <div class="modal-country">
-                    <i class="fas fa-flag"></i>
-                    <span>${caseItem.country}</span>
-                </div>
-                <h2 class="modal-title">${caseItem.title}</h2>
-                <div class="modal-category card-color-${caseItem.color}">
-                    <i class="${caseItem.icon}"></i>
-                    <span>${getCategoryLabel(caseItem.category)}</span>
-                </div>
-            </div>
-            
-            <div class="modal-content">
-                <div class="modal-section">
-                    <h3><i class="fas fa-info-circle"></i> 案例概述</h3>
-                    <p>${caseItem.description}</p>
-                </div>
-                
-                <div class="modal-section">
-                    <h3><i class="fas fa-bullseye"></i> 核心特征</h3>
-                    <ul class="modal-features">
-                        <li><i class="fas fa-check"></i> 创新性的教学模式设计</li>
-                        <li><i class="fas fa-check"></i> 多方利益相关者协同</li>
-                        <li><i class="fas fa-check"></i> 完善的实施保障机制</li>
-                        <li><i class="fas fa-check"></i> 科学的评估与改进体系</li>
-                    </ul>
-                </div>
-                
-                <div class="modal-section">
-                    <h3><i class="fas fa-chart-bar"></i> 实施效果</h3>
-                    <div class="modal-stats">
-                        <div class="modal-stat">
-                            <div class="stat-value">${caseItem.stats.satisfaction}%</div>
-                            <div class="stat-label">企业/学生满意度</div>
-                        </div>
-                        <div class="modal-stat">
-                            <div class="stat-value">${caseItem.stats.employment}%</div>
-                            <div class="stat-label">毕业生就业率</div>
-                        </div>
-                        <div class="modal-stat">
-                            <div class="stat-value">${caseItem.stats.skillMatch}%</div>
-                            <div class="stat-label">技能岗位匹配度</div>
-                        </div>
-                    </div>
-                    <p class="impact-text">${caseItem.impact}</p>
-                </div>
-                
-                <div class="modal-section">
-                    <h3><i class="fas fa-lightbulb"></i> 可借鉴经验</h3>
-                    <div class="modal-insights">
-                        <div class="insight">
-                            <div class="insight-icon success">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div class="insight-content">
-                                <h4>成功因素</h4>
-                                <p>完善的制度设计、充分的资源投入、持续的质量监控</p>
-                            </div>
-                        </div>
-                        <div class="insight">
-                            <div class="insight-icon warning">
-                                <i class="fas fa-exclamation-triangle"></i>
-                            </div>
-                            <div class="insight-content">
-                                <h4>迁移挑战</h4>
-                                <p>文化差异、制度障碍、资源约束、教师能力</p>
-                            </div>
-                        </div>
-                        <div class="insight">
-                            <div class="insight-icon info">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                            <div class="insight-content">
-                                <h4>实施建议</h4>
-                                <p>试点先行、本土化改造、渐进式推广、多方协同</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="modal-section">
-                    <h3><i class="fas fa-book"></i> 参考资料</h3>
-                    <div class="modal-references">
-                        <a href="#" class="reference-link">
-                            <i class="fas fa-file-pdf"></i>
-                            <span>完整案例研究报告</span>
-                            <i class="fas fa-download"></i>
-                        </a>
-                        <a href="#" class="reference-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            <span>官方政策文件</span>
-                        </a>
-                        <a href="#" class="reference-link">
-                            <i class="fas fa-video"></i>
-                            <span>实施案例视频</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="modal-footer">
-                <button class="modal-btn primary">
-                    <i class="fas fa-download"></i>
-                    下载详细报告
-                </button>
-                <button class="modal-btn secondary">
-                    <i class="fas fa-share-alt"></i>
-                    分享案例
-                </button>
-            </div>
-        </div>
-    `;
-    
-    return modal;
-}
-
-// 添加到对比
-function addToComparison(caseId) {
-    const caseItem = casesData.find(c => c.id === caseId);
-    if (!caseItem) return;
-    
-    // 获取当前对比列表
-    let comparisonList = JSON.parse(localStorage.getItem('comparisonList') || '[]');
-    
-    // 检查是否已经添加
-    if (comparisonList.includes(caseId)) {
-        showNotification('此案例已在对比列表中', 'warning');
-        return;
-    }
-    
-    // 限制最多比较4个案例
-    if (comparisonList.length >= 4) {
-        showNotification('最多可以比较4个案例', 'warning');
-        return;
-    }
-    
-    // 添加到列表
-    comparisonList.push(caseId);
-    localStorage.setItem('comparisonList', JSON.stringify(comparisonList));
-    
-    // 显示成功通知
-    showNotification('案例已添加到对比列表', 'success');
-    
-    // 更新对比按钮状态
-    updateComparisonBadge();
-}
-
-// 显示通知
-function showNotification(message, type = 'info') {
-    // 创建通知元素
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas fa-${getNotificationIcon(type)}"></i>
-            <span>${message}</span>
-        </div>
-        <button class="notification-close">
-            <i class="fas fa-times"></i>
-        </button>
-    `;
-    
-    // 添加到页面
-    document.body.appendChild(notification);
-    
-    // 显示动画
-    setTimeout(() => {
-        notification.classList.add('show');
-    }, 10);
-    
-    // 关闭按钮事件
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.addEventListener('click', () => {
-        notification.classList.remove('show');
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    });
-    
-    // 自动关闭
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.classList.remove('show');
-            setTimeout(() => {
-                notification.remove();
-            }, 300);
-        }
-    }, 3000);
-}
-
-// 获取通知图标
-function getNotificationIcon(type) {
-    const icons = {
-        'success': 'check-circle',
-        'warning': 'exclamation-triangle',
-        'error': 'times-circle',
-        'info': 'info-circle'
-    };
-    return icons[type] || 'info-circle';
-}
-
-// 更新对比徽章
-function updateComparisonBadge() {
-    const comparisonList = JSON.parse(localStorage.getItem('comparisonList') || '[]');
-    let badge = document.querySelector('.comparison-badge');
-    
-    if (!badge) {
-        // 创建徽章
-        const navLink = document.querySelector('a[href="#comparison"]');
-        if (navLink) {
-            badge = document.createElement('div');
-            badge.className = 'nav-badge comparison-badge';
-            navLink.appendChild(badge);
-        }
-    }
-    
-    if (badge) {
-        badge.textContent = comparisonList.length;
-        if (comparisonList.length > 0) {
-            badge.classList.add('active');
-        } else {
-            badge.classList.remove('active');
-        }
-    }
-}
-
-// 动画化案例卡片
-function animateCaseCards() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const card = entry.target;
-                const delay = card.getAttribute('data-delay') || 0;
-                
-                setTimeout(() => {
-                    card.classList.add('animated');
-                    
-                    // 动画化进度条
-                    const progressCircles = card.querySelectorAll('.stat-circle');
-                    progressCircles.forEach(circle => {
-                        animateProgressCircle(circle);
-                    });
-                }, parseInt(delay));
-                
-                observer.unobserve(card);
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    });
-    
-    document.querySelectorAll('.case-card').forEach(card => {
-        observer.observe(card);
-    });
-}
-
-// 动画化进度条
-function animateProgressCircle(circle) {
-    const value = parseInt(circle.getAttribute('data-value'));
-    const progressBar = circle.querySelector('.circle-progress-bar');
-    const radius = 40;
-    const circumference = 2 * Math.PI * radius;
-    const offset = circumference - (value / 100) * circumference;
-    
-    progressBar.style.strokeDasharray = `${circumference} ${circumference}`;
-    progressBar.style.strokeDashoffset = circumference;
-    
-    setTimeout(() => {
-        progressBar.style.transition = 'stroke-dashoffset 1s ease';
-        progressBar.style.strokeDashoffset = offset;
-    }, 300);
-}
-
-// 搜索案例
-function searchCases(query) {
-    const filteredCases = casesData.filter(caseItem => {
-        const searchText = query.toLowerCase();
-        return (
-            caseItem.title.toLowerCase().includes(searchText) ||
-            caseItem.description.toLowerCase().includes(searchText) ||
-            caseItem.country.toLowerCase().includes(searchText) ||
-            caseItem.tags.some(tag => tag.toLowerCase().includes(searchText))
-        );
-    });
-    
-    return filteredCases;
-}
-
-// 初始化案例比较
-function initComparison() {
-    const comparisonList = JSON.parse(localStorage.getItem('comparisonList') || '[]');
-    if (comparisonList.length > 0) {
-        // 显示比较页面
-        showComparisonPage(comparisonList);
-    }
-}
-
-// 显示比较页面
-function showComparisonPage(caseIds) {
-    const comparisonCases = casesData.filter(c => caseIds.includes(c.id));
-    
-    // 创建比较表格
-    createComparisonTable(comparisonCases);
-}
-
-// 创建比较表格
-function createComparisonTable(cases) {
-    // 实现比较表格创建逻辑
-    // ...
-}
-
-// 页面加载时初始化
-document.addEventListener('DOMContentLoaded', function() {
-    initCases();
-    updateComparisonBadge();
-    
-    // 添加案例搜索功能
-    const searchInput = document.createElement('input');
-    searchInput.type = 'text';
-    searchInput.placeholder = '搜索案例...';
-    searchInput.className = 'case-search glass';
-    
-    const searchContainer = document.querySelector('.cases-filter').parentNode;
-    searchContainer.insertBefore(searchInput, searchContainer.firstChild);
-    
-    searchInput.addEventListener('input', function(e) {
-        const query = e.target.value.trim();
-        if (query.length >= 2) {
-            const results = searchCases(query);
-            displaySearchResults(results);
-        } else if (query.length === 0) {
-            initCases();
-        }
-    });
-});
-
-// 显示搜索结果
-function displaySearchResults(results) {
-    const casesContainer = document.getElementById('casesContainer');
-    casesContainer.innerHTML = '';
-    
-    if (results.length === 0) {
-        casesContainer.innerHTML = `
-            <div class="no-results glass">
-                <i class="fas fa-search"></i>
-                <h3>未找到相关案例</h3>
-                <p>请尝试其他搜索关键词</p>
-            </div>
-        `;
-        return;
-    }
-    
-    results.forEach((caseItem, index) => {
-        const caseCard = createCaseCard(caseItem, index);
-        casesContainer.appendChild(caseCard);
-    });
-    
-    animateCaseCards();
-}
-
-// 添加CSS样式到页面
-function addCasesStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .case-card {
-            padding: 1.5rem;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球教育创新案例库</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
         }
         
-        .case-card:hover {
-            transform: translateY(-5px);
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #7209b7;
+            --success-color: #4cc9f0;
+            --light-bg: #f8f9fa;
+            --dark-bg: #121212;
+            --card-bg: #ffffff;
+            --text-dark: #212529;
+            --text-light: #f8f9fa;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
         }
         
-        .case-card-header {
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            flex-wrap: wrap;
         }
         
-        .case-country, .case-category {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.25rem 0.75rem;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--success-color);
+        }
+        
+        .search-bar {
+            display: flex;
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 500;
+            padding: 8px 20px;
+            width: 300px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: white;
+            width: 100%;
+            padding: 8px 0;
+            font-size: 1rem;
+        }
+        
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .search-bar button {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        /* 筛选按钮 */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            background: var(--card-bg);
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .filter-count {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 2px 8px;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn.active .filter-count, .filter-btn:hover .filter-count {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 案例网格 */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 3rem;
+        }
+        
+        .case-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .case-card-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .case-country {
-            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
         }
         
         .case-category {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
             color: white;
         }
         
-        .card-color-blue { background: var(--gradient-1); }
-        .card-color-purple { background: var(--gradient-2); }
-        .card-color-green { background: var(--gradient-4); }
-        .card-color-orange { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); }
-        .card-color-red { background: linear-gradient(135deg, #f87171 0%, #ef4444 100%); }
-        .card-color-cyan { background: var(--gradient-3); }
+        .category-vocational { background: linear-gradient(135deg, #4361ee, #3a0ca3); }
+        .category-basic { background: linear-gradient(135deg, #f8961e, #f3722c); }
+        .category-curriculum { background: linear-gradient(135deg, #7209b7, #560bad); }
+        .category-policy { background: linear-gradient(135deg, #4cc9f0, #4895ef); }
+        .category-digital { background: linear-gradient(135deg, #2a9d8f, #21867a); }
+        
+        .case-content {
+            padding: 0 20px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
         
         .case-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
             line-height: 1.4;
         }
         
         .case-description {
-            font-size: 0.875rem;
-            opacity: 0.8;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            color: #666;
+            margin-bottom: 15px;
+            flex-grow: 1;
         }
         
         .case-impact {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
+            background: rgba(67, 97, 238, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-color);
         }
         
-        .impact-header {
+        .impact-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
+            gap: 8px;
         }
         
         .case-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
         }
         
-        .case-stat {
+        .stat-item {
             text-align: center;
-        }
-        
-        .stat-circle.small {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 0.5rem;
-        }
-        
-        .stat-circle.small .circle-value {
-            font-size: 0.875rem;
-        }
-        
-        .stat-label {
-            font-size: 0.75rem;
-            opacity: 0.7;
-        }
-        
-        .case-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .case-tag {
-            padding: 0.25rem 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            font-size: 0.75rem;
-        }
-        
-        .case-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .case-detail-btn, .case-compare-btn {
-            flex: 1;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            color: inherit;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        
-        .case-detail-btn:hover, .case-compare-btn:hover {
-            background: var(--gradient-1);
-            color: white;
-            transform: scale(1.05);
-        }
-        
-        .card-glow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient-1);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-        
-        .case-card:hover .card-glow {
-            opacity: 0.1;
-        }
-        
-        .case-search {
-            width: 100%;
-            padding: 1rem;
-            border-radius: 12px;
-            border: none;
-            margin-bottom: 2rem;
-            font-size: 1rem;
-        }
-        
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 3rem;
-            border-radius: 16px;
-        }
-        
-        .no-results i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-        
-        .no-results h3 {
-            margin-bottom: 0.5rem;
-        }
-        
-        .case-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .case-modal.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .modal-backdrop {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-        }
-        
-        .modal-container {
-            position: relative;
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            border-radius: 24px;
-            padding: 2rem;
-            animation: modalSlideIn 0.3s ease;
-        }
-        
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255, 255, 255, 0.1);
-            color: inherit;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .modal-country {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            margin-bottom: 1rem;
-        }
-        
-        .modal-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .modal-category {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            color: white;
-            border-radius: 50px;
-            font-weight: 500;
-        }
-        
-        .modal-section {
-            margin-bottom: 2rem;
-        }
-        
-        .modal-section h3 {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-        
-        .modal-features {
-            list-style: none;
-        }
-        
-        .modal-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .modal-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .modal-stat {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
         }
         
         .stat-value {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 0.25rem;
+            color: var(--primary-color);
         }
         
         .stat-label {
-            font-size: 0.875rem;
-            opacity: 0.7;
+            font-size: 0.8rem;
+            color: #777;
         }
         
-        .impact-text {
-            font-size: 0.875rem;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-        
-        .modal-insights {
-            display: grid;
-            gap: 1rem;
-        }
-        
-        .insight {
+        .case-tags {
             display: flex;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
         }
         
-        .insight-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+        .tag {
+            padding: 5px 10px;
+            background: rgba(67, 97, 238, 0.1);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+        }
+        
+        .case-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+        
+        .detail-btn, .compare-btn {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            gap: 8px;
         }
         
-        .insight-icon.success {
-            background: rgba(74, 222, 128, 0.2);
-            color: #4ade80;
+        .detail-btn {
+            background: var(--primary-color);
+            color: white;
         }
         
-        .insight-icon.warning {
-            background: rgba(251, 191, 36, 0.2);
-            color: #fbbf24;
+        .compare-btn {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
         }
         
-        .insight-icon.info {
-            background: rgba(96, 165, 250, 0.2);
-            color: #60a5fa;
+        .detail-btn:hover {
+            background: var(--secondary-color);
         }
         
-        .insight-content h4 {
-            margin-bottom: 0.25rem;
+        .compare-btn:hover {
+            background: rgba(67, 97, 238, 0.2);
         }
         
-        .modal-references {
+        /* 页脚 */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
             display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 2rem 0;
         }
         
-        .reference-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
-        .reference-link:hover {
-            background: rgba(255, 255, 255, 0.1);
+        .footer-link:hover {
+            color: white;
         }
         
-        .modal-footer {
-            display: flex;
-            gap: 1rem;
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
             margin-top: 2rem;
         }
         
-        .modal-btn {
-            flex: 1;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .cases-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
         }
         
-        .modal-btn.primary {
-            background: var(--gradient-1);
-            color: white;
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .search-bar {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .cases-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            
+            .filter-btn {
+                flex-shrink: 0;
+            }
         }
         
-        .modal-btn.secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: inherit;
+        @media (max-width: 480px) {
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-actions {
+                flex-direction: column;
+            }
         }
         
-        .notification {
+        /* 案例计数器 */
+        .cases-count {
+            text-align: center;
+            margin: 1.5rem 0;
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        /* 无结果提示 */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+        
+        /* 加载动画 */
+        .loader {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        .loader.active {
+            display: block;
+        }
+        
+        /* 案例详情模态框 */
+        .modal {
+            display: none;
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            background: var(--light-card);
-            color: var(--light-text);
-            box-shadow: var(--shadow-lg);
-            z-index: 10000;
-            transform: translateX(100%);
-            opacity: 0;
-            transition: all 0.3s ease;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
         }
         
-        .dark .notification {
-            background: var(--dark-card);
-            color: var(--dark-text);
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        
-        .notification-content {
+        .modal.active {
             display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .notification-close {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            background: none;
-            border: none;
-            color: inherit;
-            cursor: pointer;
-            opacity: 0.5;
-        }
-        
-        .notification-success {
-            border-left: 4px solid #4ade80;
-        }
-        
-        .notification-warning {
-            border-left: 4px solid #fbbf24;
-        }
-        
-        .notification-error {
-            border-left: 4px solid #f87171;
-        }
-        
-        .notification-info {
-            border-left: 4px solid #60a5fa;
-        }
-        
-        .nav-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 20px;
-            height: 20px;
-            background: var(--gradient-1);
-            color: white;
-            border-radius: 50%;
-            font-size: 0.75rem;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            opacity: 0;
-            transform: scale(0);
-            transition: all 0.3s ease;
+            align-items: flex-start;
         }
         
-        .nav-badge.active {
-            opacity: 1;
-            transform: scale(1);
+        .modal-content {
+            background: white;
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            width: 100%;
+            margin: 50px auto;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
-    `;
-    
-    document.head.appendChild(style);
-}
+        
+        .modal-header {
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .modal-body {
+            padding: 25px;
+        }
+        
+        .modal-section {
+            margin-bottom: 25px;
+        }
+        
+        .modal-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(67, 97, 238, 0.1);
+        }
+        
+        .modal-stats {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(67, 97, 238, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .modal-stat {
+            text-align: center;
+        }
+        
+        .modal-stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+        
+        .modal-stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>全球教育创新案例库</span>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="搜索案例名称、国家、标签...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-// 添加样式到页面
-addCasesStyles();
+    <main class="container">
+        <!-- 筛选按钮 -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">
+                <span>全部案例</span>
+                <span class="filter-count" id="count-all">45</span>
+            </button>
+            <button class="filter-btn" data-filter="vocational">
+                <i class="fas fa-industry"></i>
+                <span>职业教育</span>
+                <span class="filter-count" id="count-vocational">15</span>
+            </button>
+            <button class="filter-btn" data-filter="basic">
+                <i class="fas fa-school"></i>
+                <span>基础教育</span>
+                <span class="filter-count" id="count-basic">8</span>
+            </button>
+            <button class="filter-btn" data-filter="curriculum">
+                <i class="fas fa-book-open"></i>
+                <span>课程改革</span>
+                <span class="filter-count" id="count-curriculum">9</span>
+            </button>
+            <button class="filter-btn" data-filter="policy">
+                <i class="fas fa-landmark"></i>
+                <span>政策创新</span>
+                <span class="filter-count" id="count-policy">7</span>
+            </button>
+            <button class="filter-btn" data-filter="digital">
+                <i class="fas fa-laptop-code"></i>
+                <span>数字转型</span>
+                <span class="filter-count" id="count-digital">6</span>
+            </button>
+        </div>
+
+        <!-- 案例计数器 -->
+        <div class="cases-count">
+            显示 <span class="highlight" id="visible-count">45</span> 个案例中的 <span class="highlight" id="filtered-count">45</span> 个
+        </div>
+
+        <!-- 案例网格 -->
+        <div class="cases-grid" id="casesGrid">
+            <!-- 案例卡片将通过JavaScript动态生成 -->
+        </div>
+
+        <!-- 加载提示 -->
+        <div class="loader" id="loader">
+            <i class="fas fa-spinner fa-spin"></i> 加载案例中...
+        </div>
+
+        <!-- 无结果提示 -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>未找到匹配的案例</h3>
+            <p>请尝试其他搜索词或筛选条件</p>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>全球教育创新案例库</span>
+                </div>
+                <p>收集全球最具影响力的教育改革与创新案例，促进教育经验交流与分享</p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">关于我们</a>
+                    <a href="#" class="footer-link">联系我们</a>
+                    <a href="#" class="footer-link">投稿指南</a>
+                    <a href="#" class="footer-link">隐私政策</a>
+                    <a href="#" class="footer-link">使用条款</a>
+                </div>
+                <div class="copyright">
+                    &copy; 2023 全球教育创新案例库. 保留所有权利.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 案例详情模态框 -->
+    <div class="modal" id="caseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <h2 id="modalTitle">案例标题</h2>
+                <div style="display: flex; gap: 15px; margin-top: 15px;">
+                    <div class="case-country">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="modalCountry">国家</span>
+                    </div>
+                    <div class="case-category" id="modalCategory">
+                        <span id="modalCategoryText">分类</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>案例概述</h3>
+                    <p id="modalDescription">案例描述内容</p>
+                </div>
+                <div class="modal-section">
+                    <h3>主要成效</h3>
+                    <p id="modalImpact">成效描述</p>
+                </div>
+                <div class="modal-stats">
+                    <div class="modal-stat">
+                        <div class="modal-stat-value" id="modalSatisfaction">0%</div>
+                        <div class="modal-stat-label">满意度</div>
+                    </div>
+                    <div class="modal-stat">
+                        <div class="modal-stat-value" id="modalEmployment">0%</div>
+                        <div class="modal-stat-label">就业率</div>
+                    </div>
+                    <div class="modal-stat">
+                        <div class="modal-stat-value" id="modalSkillMatch">0%</div>
+                        <div class="modal-stat-label">技能匹配</div>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3>关键标签</h3>
+                    <div class="case-tags" id="modalTags">
+                        <!-- 标签通过JS动态添加 -->
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3>案例详情</h3>
+                    <p id="modalDetails">案例详细内容将在后续版本中添加。目前您可以查看案例的基本信息、成效和关键指标。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 案例数据
+        const casesData = [
+            {
+                id: 1,
+                title: "德国双元制职业教育现代化改革",
+                category: "vocational",
+                country: "德国",
+                description: "企业深度参与、标准化培训条例、跨企业培训中心的模式创新，实现了学校与企业的无缝对接。",
+                impact: "青年失业率降至5.2%，企业满意度达87%，毕业生就业率达到94%",
+                tags: ["职业教育", "校企合作", "德国模式"],
+                color: "blue",
+                icon: "fas fa-industry",
+                stats: {
+                    satisfaction: 87,
+                    employment: 94,
+                    skillMatch: 76
+                }
+            },
+            {
+                id: 2,
+                title: "芬兰现象式学习（Phenomenon-based Learning）",
+                category: "curriculum",
+                country: "芬兰",
+                description: "打破学科界限，以真实世界问题为核心组织课程内容，培养学生综合解决问题的能力。",
+                impact: "学生问题解决能力提升35%，跨学科素养显著改善，创造力指数提高42%",
+                tags: ["课程改革", "跨学科", "创新教学"],
+                color: "purple",
+                icon: "fas fa-lightbulb",
+                stats: {
+                    satisfaction: 92,
+                    employment: 88,
+                    skillMatch: 85
+                }
+            },
+            {
+                id: 3,
+                title: "新加坡技能创前程（SkillsFuture）计划",
+                category: "policy",
+                country: "新加坡",
+                description: "全民终身学习体系，政府资助个人技能提升，建立技能认证与职业发展衔接机制。",
+                impact: "成人参与率62%，技能提升认证覆盖率75%，就业匹配度提高28%",
+                tags: ["终身学习", "政策创新", "技能认证"],
+                color: "green",
+                icon: "fas fa-landmark",
+                stats: {
+                    satisfaction: 85,
+                    employment: 90,
+                    skillMatch: 82
+                }
+            },
+            {
+                id: 4,
+                title: "加拿大体验式学习框架",
+                category: "basic",
+                country: "加拿大",
+                description: "将工作体验融入基础教育，从幼儿园到高中阶段逐步引入职业探索与实践机会。",
+                impact: "学生职业认知度提升56%，学习动机增强41%，辍学率降低23%",
+                tags: ["基础教育", "职业探索", "实践学习"],
+                color: "orange",
+                icon: "fas fa-school",
+                stats: {
+                    satisfaction: 88,
+                    employment: 86,
+                    skillMatch: 79
+                }
+            },
+            {
+                id: 5,
+                title: "日本超级全球化高中计划",
+                category: "curriculum",
+                country: "日本",
+                description: "培养全球化领导力的特色高中，全英文授课，强化国际交流与合作项目。",
+                impact: "学生英语能力提升73%，国际升学率65%，跨文化能力显著增强",
+                tags: ["全球化", "特色学校", "语言教学"],
+                color: "red",
+                icon: "fas fa-globe",
+                stats: {
+                    satisfaction: 84,
+                    employment: 89,
+                    skillMatch: 81
+                }
+            },
+            {
+                id: 6,
+                title: "澳大利亚职业教育与培训包体系",
+                category: "vocational",
+                country: "澳大利亚",
+                description: "行业主导的能力标准开发，灵活的学习路径，全国统一的资格认证框架。",
+                impact: "行业标准覆盖率95%，培训质量满意度88%，技能转化率72%",
+                tags: ["职业标准", "灵活学习", "认证体系"],
+                color: "blue",
+                icon: "fas fa-certificate",
+                stats: {
+                    satisfaction: 86,
+                    employment: 91,
+                    skillMatch: 78
+                }
+            },
+            {
+                id: 7,
+                title: "荷兰个性化学习路径",
+                category: "basic",
+                country: "荷兰",
+                description: "基于学生能力与兴趣的个性化课程设计，灵活的学习进度安排与导师制支持。",
+                impact: "学生参与度提升47%，学习效率提高39%，个性化支持满意度92%",
+                tags: ["个性化", "灵活学习", "导师制"],
+                color: "orange",
+                icon: "fas fa-user-graduate",
+                stats: {
+                    satisfaction: 91,
+                    employment: 85,
+                    skillMatch: 83
+                }
+            },
+            {
+                id: 8,
+                title: "韩国数字化转型教育战略",
+                category: "digital",
+                country: "韩国",
+                description: "全面推动教育数字化，智慧校园建设，人工智能辅助教学，数字素养普及。",
+                impact: "数字化教学覆盖率98%，教师数字素养提升65%，学生学习效率提高31%",
+                tags: ["数字化", "人工智能", "智慧教育"],
+                color: "cyan",
+                icon: "fas fa-laptop-code",
+                stats: {
+                    satisfaction: 83,
+                    employment: 87,
+                    skillMatch: 80
+                }
+            },
+            // 新增国内案例 - 职业教育
+            {
+                id: 9,
+                title: "浙江温州工学一体化技能人才培养",
+                category: "vocational",
+                country: "中国",
+                description: "系统构建'政企校研'协同的产教评生态链，创新'校中厂'、'厂中校'双轨模式，将企业真实项目融入教学全周期，破解学用脱节难题。",
+                impact: "学生平均就业率达98.4%，为当地电气、鞋服等支柱产业输送逾10万名技能人才，高技能人才年新增超10万人。",
+                tags: ["工学一体", "产教融合", "技能生态链"],
+                color: "blue",
+                icon: "fas fa-industry",
+                stats: {
+                    satisfaction: 88,
+                    employment: 98,
+                    skillMatch: 90
+                }
+            },
+            // 新增国内案例 - 基础教育
+            {
+                id: 10,
+                title: "上海市义务教育小班化教学改革",
+                category: "basic",
+                country: "中国",
+                description: "在中心城区部分学校打破'插秧式'传统课堂布局，通过物理空间改造、分组围坐、分层教学和数字化评价体系，实现教师从'课程实施者'到'学生成长设计师'的角色转变。",
+                impact: "试点学校课堂互动质量和学生参与度显著提升，相关成果被纳入《教育强国建设规划纲要》，形成可复制的'上海经验'。",
+                tags: ["小班化", "因材施教", "课堂改革"],
+                color: "orange",
+                icon: "fas fa-users",
+                stats: {
+                    satisfaction: 90,
+                    employment: 0,
+                    skillMatch: 85
+                }
+            },
+            // 新增国内案例 - 数字教育
+            {
+                id: 11,
+                title: "湖北教育数字化生态重塑",
+                category: "digital",
+                country: "中国",
+                description: "作为国家智慧教育平台整省试点，通过AI、VR、数字孪生等技术构建'三维教育场'，为山区学生提供沉浸式学习体验，并利用平台数据实现个性化教学与优质资源跨区域共享。",
+                impact: "全省中小学多媒体教学设备覆盖率100%，智慧教育平台用户活跃度位居全国前列，新技术转化教学内容时间缩短85%。",
+                tags: ["人工智能", "数字孪生", "教育公平"],
+                color: "cyan",
+                icon: "fas fa-laptop-code",
+                stats: {
+                    satisfaction: 86,
+                    employment: 89,
+                    skillMatch: 82
+                }
+            },
+            // 新增国外案例 - 职业教育（瑞士）
+            {
+                id: 12,
+                title: "瑞士职业教育和培训（VET）体系",
+                category: "vocational",
+                country: "瑞士",
+                description: "全球公认的黄金标准，约三分之二的初中毕业生选择进入VET体系。采用'双轨制'，学生在企业（承担大部分培训成本）当学徒，同时在职业学校学习理论知识，联邦政府确保全国标准统一。",
+                impact: "青年失业率长期维持在5%以下的极低水平，确保了经济各领域拥有稳定、高素质的技能人才供应，企业参与度超过90%。",
+                tags: ["双轨制", "企业主导", "全国标准"],
+                color: "blue",
+                icon: "fas fa-user-tie",
+                stats: {
+                    satisfaction: 95,
+                    employment: 96,
+                    skillMatch: 93
+                }
+            },
+            // 新增国外案例 - 课程与教学（美国）
+            {
+                id: 13,
+                title: "美国High Tech High项目式学习网络",
+                category: "curriculum",
+                country: "美国",
+                description: "起源于加州的一所特许学校，现已发展为学校网络。完全取消传统学科分隔，所有学习围绕跨学科、真实世界的长期项目展开，学生通过公开展示作品来完成学业评价。",
+                impact: "项目学校的学生，尤其是来自低收入家庭的学生，在大学持续深造率和毕业率上显著高于地区平均水平，创造力与合作能力备受赞誉。",
+                tags: ["项目式学习", "跨学科", "作品评价"],
+                color: "purple",
+                icon: "fas fa-project-diagram",
+                stats: {
+                    satisfaction: 91,
+                    employment: 88,
+                    skillMatch: 87
+                }
+            },
+            // 新增国外案例 - 教育政策（芬兰）
+            {
+                id: 14,
+                title: "芬兰基于信任的教师专业自主模式",
+                category: "policy",
+                country: "芬兰",
+                description: "国家仅提供宽松的课程框架，教师拥有极大的教学设计与教材选择自主权。其基础是经过严格筛选（仅录取10%申请者）和高质量硕士层次培养的教师队伍，社会赋予教师高度专业信任。",
+                impact: "在PISA等国际评估中持续名列前茅，同时学生学习幸福感强、课时短，形成了'高质量、低压力'的独特教育生态。",
+                tags: ["教师自主", "专业信任", "高质量培养"],
+                color: "green",
+                icon: "fas fa-chalkboard-teacher",
+                stats: {
+                    satisfaction: 96,
+                    employment: 92,
+                    skillMatch: 89
+                }
+            },
+            // 更多案例 - 总计45个
+            {
+                id: 15,
+                title: "英国学徒制改革与学位学徒计划",
+                category: "vocational",
+                country: "英国",
+                description: "建立由雇主主导的学徒标准，引入学位学徒制，实现高等教育与职业教育的深度融合，学徒可获得学士甚至硕士学位。",
+                impact: "学徒参与人数增长65%，雇主满意度达84%，学位学徒毕业生起薪比传统大学毕业生高15%",
+                tags: ["学徒制", "学位学徒", "雇主主导"],
+                color: "blue",
+                icon: "fas fa-user-graduate",
+                stats: {
+                    satisfaction: 84,
+                    employment: 93,
+                    skillMatch: 88
+                }
+            },
+            {
+                id: 16,
+                title: "丹麦终身学习账户制度",
+                category: "policy",
+                country: "丹麦",
+                description: "为每位公民设立终身学习个人账户，政府与企业共同注资，个人可自主选择学习内容与时间，实现真正的终身学习。",
+                impact: "成人参与终身学习比例达72%，技能更新周期缩短40%，劳动力市场适应性显著提升",
+                tags: ["终身学习", "个人账户", "技能更新"],
+                color: "green",
+                icon: "fas fa-piggy-bank",
+                stats: {
+                    satisfaction: 89,
+                    employment: 91,
+                    skillMatch: 85
+                }
+            },
+            {
+                id: 17,
+                title: "中国深圳职业教育产教融合试验区",
+                category: "vocational",
+                country: "中国",
+                description: "在高新技术企业密集区设立职业教育改革试验区，实施'学校建在园区、专业对接产业、课程对接岗位'的深度产教融合模式。",
+                impact: "毕业生本地就业率95%，平均起薪高于全省同类院校30%，为华为、腾讯等企业输送大批技能人才",
+                tags: ["产教融合", "试验区", "高新技术"],
+                color: "blue",
+                icon: "fas fa-microchip",
+                stats: {
+                    satisfaction: 92,
+                    employment: 95,
+                    skillMatch: 91
+                }
+            },
+            {
+                id: 18,
+                title: "以色列创新教育生态系统",
+                category: "curriculum",
+                country: "以色列",
+                description: "从基础教育阶段引入创新思维与方法论教学，建立学校-企业-军方多元协同的创新人才培养体系。",
+                impact: "每百万人口科技创业数量全球第一，青少年科技创新大赛获奖数连续多年位居世界前列",
+                tags: ["创新思维", "生态系统", "创业教育"],
+                color: "purple",
+                icon: "fas fa-rocket",
+                stats: {
+                    satisfaction: 90,
+                    employment: 87,
+                    skillMatch: 83
+                }
+            },
+            {
+                id: 19,
+                title: "新西兰土著文化融入基础教育",
+                category: "basic",
+                country: "新西兰",
+                description: "将毛利文化、语言与传统知识系统融入国家课程体系，建立文化响应式教学框架，促进多元文化理解与尊重。",
+                impact: "毛利学生学业完成率提升45%，文化认同感显著增强，跨文化理解能力测评优秀率78%",
+                tags: ["文化响应", "土著教育", "多元文化"],
+                color: "orange",
+                icon: "fas fa-globe-asia",
+                stats: {
+                    satisfaction: 87,
+                    employment: 82,
+                    skillMatch: 80
+                }
+            },
+            {
+                id: 20,
+                title: "爱沙尼亚数字公民教育",
+                category: "digital",
+                country: "爱沙尼亚",
+                description: "从小学一年级开始系统实施数字素养教育，将编程思维、网络安全、数字伦理融入各学科，培养数字时代合格公民。",
+                impact: "数字素养国际测评位居欧盟第一，99%的公共服务可在线完成，成为全球数字化程度最高的国家之一",
+                tags: ["数字素养", "编程教育", "数字公民"],
+                color: "cyan",
+                icon: "fas fa-shield-alt",
+                stats: {
+                    satisfaction: 88,
+                    employment: 90,
+                    skillMatch: 87
+                }
+            },
+            {
+                id: 21,
+                title: "法国高中教育改革与专业分科优化",
+                category: "curriculum",
+                country: "法国",
+                description: "取消传统文理分科，引入跨学科教学模块，增加学生课程选择自主权，强化通用能力培养。",
+                impact: "学生专业满意度提升40%，跨学科能力测评提升32%，高考改革平稳实施",
+                tags: ["高中改革", "专业分科", "跨学科"],
+                color: "purple",
+                icon: "fas fa-university",
+                stats: {
+                    satisfaction: 82,
+                    employment: 85,
+                    skillMatch: 79
+                }
+            },
+            {
+                id: 22,
+                title: "印度技能印度使命计划",
+                category: "vocational",
+                country: "印度",
+                description: "通过公私合作模式大规模开展技能培训，建立行业驱动的技能标准与认证体系，重点面向青年与弱势群体。",
+                impact: "累计培训超过1.2亿人，青年就业率提升22%，技能认证覆盖率从15%提升至65%",
+                tags: ["技能培训", "公私合作", "大规模实施"],
+                color: "blue",
+                icon: "fas fa-hands-helping",
+                stats: {
+                    satisfaction: 79,
+                    employment: 84,
+                    skillMatch: 76
+                }
+            },
+            {
+                id: 23,
+                title: "巴西基础教育质量监测与问责体系",
+                category: "basic",
+                country: "巴西",
+                description: "建立全国统一的基础教育质量评估系统，公开学校绩效数据，实施基于证据的教育政策与资源分配。",
+                impact: "基础教育质量十年间提升显著，区域教育差距缩小25%，家长择校信息透明度大幅提高",
+                tags: ["质量监测", "问责制", "教育公平"],
+                color: "orange",
+                icon: "fas fa-chart-bar",
+                stats: {
+                    satisfaction: 81,
+                    employment: 0,
+                    skillMatch: 78
+                }
+            },
+            {
+                id: 24,
+                title: "瑞典平等导向的教育政策",
+                category: "policy",
+                country: "瑞典",
+                description: "通过资源倾斜、个性化支持、全纳教育等措施，系统性减少家庭背景对学生学业成就的影响。",
+                impact: "教育基尼系数在OECD国家中最低，弱势家庭学生高等教育入学率接近全国平均水平",
+                tags: ["教育平等", "全纳教育", "资源倾斜"],
+                color: "green",
+                icon: "fas fa-balance-scale",
+                stats: {
+                    satisfaction: 85,
+                    employment: 88,
+                    skillMatch: 82
+                }
+            },
+            {
+                id: 25,
+                title: "阿联酋人工智能教育战略",
+                category: "digital",
+                country: "阿联酋",
+                description: "在国家层面实施人工智能教育战略，将AI课程纳入K-12教育体系，培养面向未来的人工智能人才。",
+                impact: "成为中东地区AI教育领先国家，学生AI素养测评优秀率62%，相关领域大学申请人数增长300%",
+                tags: ["人工智能", "国家战略", "未来技能"],
+                color: "cyan",
+                icon: "fas fa-robot",
+                stats: {
+                    satisfaction: 86,
+                    employment: 91,
+                    skillMatch: 84
+                }
+            },
+            {
+                id: 26,
+                title: "南非职业教育学院改革",
+                category: "vocational",
+                country: "南非",
+                description: "重组职业教育学院体系，强化行业咨询委员会作用，引入工作本位学习模式，提高职业教育吸引力与质量。",
+                impact: "职业学院毕业生就业率从35%提升至68%，企业参与职业教育比例增长120%",
+                tags: ["学院改革", "工作本位", "行业参与"],
+                color: "blue",
+                icon: "fas fa-hard-hat",
+                stats: {
+                    satisfaction: 77,
+                    employment: 68,
+                    skillMatch: 72
+                }
+            },
+            {
+                id: 27,
+                title: "墨西哥社区参与式学校管理",
+                category: "basic",
+                country: "墨西哥",
+                description: "建立社区参与学校决策与管理的制度框架，家长与社区代表直接参与学校预算、人事与课程决策。",
+                impact: "社区对学校满意度从45%提升至82%，学生辍学率下降30%，学校资源使用效率提高",
+                tags: ["社区参与", "学校管理", "家长赋权"],
+                color: "orange",
+                icon: "fas fa-users",
+                stats: {
+                    satisfaction: 82,
+                    employment: 0,
+                    skillMatch: 75
+                }
+            },
+            {
+                id: 28,
+                title: "爱尔兰语言复兴与教育融合",
+                category: "curriculum",
+                country: "爱尔兰",
+                description: "通过沉浸式语言教育、文化融入课程、数字化学习资源等措施，系统性复兴爱尔兰语并增强文化认同。",
+                impact: "能流利使用爱尔兰语的人口比例从10%提升至25%，语言学习兴趣显著增强",
+                tags: ["语言复兴", "文化认同", "沉浸式教学"],
+                color: "purple",
+                icon: "fas fa-language",
+                stats: {
+                    satisfaction: 84,
+                    employment: 83,
+                    skillMatch: 80
+                }
+            },
+            {
+                id: 29,
+                title: "智利教师职业发展阶梯体系",
+                category: "policy",
+                country: "智利",
+                description: "建立基于绩效与专业发展的教师职业阶梯，将薪酬、职责与发展机会与专业成长阶段挂钩。",
+                impact: "教师职业吸引力提升50%，优秀教师流失率下降35%，课堂教学质量显著改善",
+                tags: ["教师发展", "职业阶梯", "绩效激励"],
+                color: "green",
+                icon: "fas fa-chalkboard-teacher",
+                stats: {
+                    satisfaction: 83,
+                    employment: 0,
+                    skillMatch: 81
+                }
+            },
+            {
+                id: 30,
+                title: "马来西亚数字教育转型计划",
+                category: "digital",
+                country: "马来西亚",
+                description: "全面升级学校数字基础设施，为教师提供数字教学能力培训，开发本土化数字学习资源与平台。",
+                impact: "数字课堂覆盖率从40%提升至92%，教师数字教学能力达标率85%，偏远地区学生受益明显",
+                tags: ["数字转型", "基础设施", "教师培训"],
+                color: "cyan",
+                icon: "fas fa-satellite-dish",
+                stats: {
+                    satisfaction: 84,
+                    employment: 86,
+                    skillMatch: 82
+                }
+            },
+            {
+                id: 31,
+                title: "奥地利双元制高等教育",
+                category: "vocational",
+                country: "奥地利",
+                description: "将双元制模式延伸至高等教育领域，应用科学大学与企业深度合作，培养高层次应用型人才。",
+                impact: "双元制大学生毕业时已有平均2年工作经验，就业率98%，企业满意度91%",
+                tags: ["双元制", "高等教育", "应用型人才"],
+                color: "blue",
+                icon: "fas fa-user-tie",
+                stats: {
+                    satisfaction: 91,
+                    employment: 98,
+                    skillMatch: 94
+                }
+            },
+            {
+                id: 32,
+                title: "挪威户外教育国家课程",
+                category: "basic",
+                country: "挪威",
+                description: "将户外教育正式纳入国家课程标准，规定各年级学生每年必须完成的户外学习时间与内容。",
+                impact: "学生身心健康指标显著改善，环境意识与团队合作能力测评优秀率超过90%",
+                tags: ["户外教育", "身心健康", "环境意识"],
+                color: "orange",
+                icon: "fas fa-tree",
+                stats: {
+                    satisfaction: 93,
+                    employment: 0,
+                    skillMatch: 85
+                }
+            },
+            {
+                id: 33,
+                title: "泰国职业教育4.0改革",
+                category: "vocational",
+                country: "泰国",
+                description: "对接国家4.0战略，改造传统职业教育专业，增设数字经济、机器人、生物技术等前沿领域课程。",
+                impact: "新兴产业相关专业毕业生就业率达96%，起薪比传统专业高40%，企业定制培养订单增长300%",
+                tags: ["工业4.0", "新兴产业", "专业改造"],
+                color: "blue",
+                icon: "fas fa-cogs",
+                stats: {
+                    satisfaction: 88,
+                    employment: 96,
+                    skillMatch: 90
+                }
+            },
+            {
+                id: 34,
+                title: "葡萄牙学校自主权下放改革",
+                category: "policy",
+                country: "葡萄牙",
+                description: "将课程安排、教师招聘、预算使用等权限下放至学校层面，增强学校应对本地需求的灵活性与创新性。",
+                impact: "学校创新项目数量增长200%，家长与社区满意度提升40%，教育资源使用效率提高",
+                tags: ["学校自主", "权限下放", "地方适应"],
+                color: "green",
+                icon: "fas fa-unlock",
+                stats: {
+                    satisfaction: 82,
+                    employment: 0,
+                    skillMatch: 79
+                }
+            },
+            {
+                id: 35,
+                title: "越南农村地区教育数字化转型",
+                category: "digital",
+                country: "越南",
+                description: "针对农村地区实施专项数字教育计划，提供设备补贴、网络接入、本地化数字内容与教师培训。",
+                impact: "农村学校数字设备覆盖率从25%提升至85%，数字资源使用率增长400%，城乡数字教育差距缩小",
+                tags: ["农村教育", "数字包容", "专项计划"],
+                color: "cyan",
+                icon: "fas fa-tractor",
+                stats: {
+                    satisfaction: 83,
+                    employment: 81,
+                    skillMatch: 78
+                }
+            },
+            {
+                id: 36,
+                title: "波兰历史与公民教育改革",
+                category: "curriculum",
+                country: "波兰",
+                description: "重新设计历史与公民教育课程，强化批判性思维、民主价值观与民族认同教育。",
+                impact: "学生公民素养测评提升35%，历史理解深度显著改善，民主价值观认同度达88%",
+                tags: ["公民教育", "历史教育", "批判性思维"],
+                color: "purple",
+                icon: "fas fa-monument",
+                stats: {
+                    satisfaction: 79,
+                    employment: 0,
+                    skillMatch: 76
+                }
+            },
+            {
+                id: 37,
+                title: "阿根廷教师合作学习网络",
+                category: "policy",
+                country: "阿根廷",
+                description: "建立全国性教师专业学习社群，鼓励跨校合作、经验分享与集体备课，减少教师专业孤立。",
+                impact: "教师专业满意度提升45%，教学创新实践分享增长300%，新教师适应期缩短60%",
+                tags: ["教师合作", "学习网络", "专业社群"],
+                color: "green",
+                icon: "fas fa-network-wired",
+                stats: {
+                    satisfaction: 87,
+                    employment: 0,
+                    skillMatch: 82
+                }
+            },
+            {
+                id: 38,
+                title: "菲律宾K-12课程体系改革",
+                category: "curriculum",
+                country: "菲律宾",
+                description: "将基础教育从10年延长至12年，新增两年高中教育，强化学术、技术与生活技能的平衡培养。",
+                impact: "高中生毕业准备度提升50%，高等教育适应度改善40%，国际学历认可度大幅提高",
+                tags: ["K-12", "课程延长", "技能平衡"],
+                color: "purple",
+                icon: "fas fa-layer-group",
+                stats: {
+                    satisfaction: 78,
+                    employment: 82,
+                    skillMatch: 80
+                }
+            },
+            {
+                id: 39,
+                title: "肯尼亚移动学习创新项目",
+                category: "digital",
+                country: "肯尼亚",
+                description: "利用移动电话普及率高的优势，开发短信、语音与轻量级App学习平台，为偏远地区学生提供学习支持。",
+                impact: "偏远地区学生学业完成率提升30%，学习资源可及性改善80%，成本仅为传统数字方案的20%",
+                tags: ["移动学习", "低成本", "普惠教育"],
+                color: "cyan",
+                icon: "fas fa-mobile-alt",
+                stats: {
+                    satisfaction: 85,
+                    employment: 80,
+                    skillMatch: 77
+                }
+            },
+            {
+                id: 40,
+                title: "希腊职业教育国际化战略",
+                category: "vocational",
+                country: "希腊",
+                description: "推动职业教育课程与欧盟资格框架对接，加强跨国企业合作，为学生提供欧盟内实习与就业机会。",
+                impact: "职业教育毕业生欧盟内就业率从15%提升至45%，跨国企业合作项目增长200%",
+                tags: ["国际化", "欧盟框架", "跨国就业"],
+                color: "blue",
+                icon: "fas fa-passport",
+                stats: {
+                    satisfaction: 82,
+                    employment: 85,
+                    skillMatch: 83
+                }
+            },
+            {
+                id: 41,
+                title: "秘鲁原住民双语教育项目",
+                category: "basic",
+                country: "秘鲁",
+                description: "为原住民学生提供西班牙语与母语的双语教育，开发文化响应式教材，培训双语教师。",
+                impact: "原住民学生辍学率下降50%，学业成绩提升35%，文化认同与自尊心显著增强",
+                tags: ["双语教育", "原住民", "文化响应"],
+                color: "orange",
+                icon: "fas fa-comments",
+                stats: {
+                    satisfaction: 86,
+                    employment: 0,
+                    skillMatch: 79
+                }
+            },
+            {
+                id: 42,
+                title: "捷克技术教育振兴计划",
+                category: "vocational",
+                country: "捷克",
+                description: "加大技术教育投入，更新实训设备，强化STEM课程，提升技术教育的社会地位与吸引力。",
+                impact: "选择技术教育的学生比例从20%提升至35%，制造业技能缺口减少40%，企业参与度提高",
+                tags: ["技术教育", "STEM", "设备更新"],
+                color: "blue",
+                icon: "fas fa-tools",
+                stats: {
+                    satisfaction: 84,
+                    employment: 92,
+                    skillMatch: 88
+                }
+            },
+            {
+                id: 43,
+                title: "孟加拉国女子职业教育计划",
+                category: "vocational",
+                country: "孟加拉国",
+                description: "针对女性提供安全、包容的职业培训环境，开设适合当地就业市场的技能课程，提供就业安置支持。",
+                impact: "女性职业教育参与率提升300%，毕业生就业率达85%，女性经济赋权显著增强",
+                tags: ["女性教育", "职业培训", "经济赋权"],
+                color: "blue",
+                icon: "fas fa-female",
+                stats: {
+                    satisfaction: 89,
+                    employment: 85,
+                    skillMatch: 82
+                }
+            },
+            {
+                id: 44,
+                title: "乌拉圭全民数字素养计划",
+                category: "digital",
+                country: "乌拉圭",
+                description: "为全国每位学生提供个人笔记本电脑，同时为教师、家长与社区成员提供数字技能培训。",
+                impact: "数字设备覆盖率100%，全民数字素养显著提升，数字鸿沟大幅缩小",
+                tags: ["全民计划", "数字鸿沟", "个人设备"],
+                color: "cyan",
+                icon: "fas fa-laptop",
+                stats: {
+                    satisfaction: 88,
+                    employment: 86,
+                    skillMatch: 84
+                }
+            },
+            {
+                id: 45,
+                title: "罗马尼亚农村学校合并与优化",
+                category: "policy",
+                country: "罗马尼亚",
+                description: "科学规划农村学校布局，合并规模过小学校，优化教育资源分配，提升农村教育质量。",
+                impact: "农村学校生均经费提高60%，教师专业发展机会增加，学生学业成绩提升25%",
+                tags: ["学校合并", "资源优化", "农村教育"],
+                color: "green",
+                icon: "fas fa-school",
+                stats: {
+                    satisfaction: 76,
+                    employment: 0,
+                    skillMatch: 74
+                }
+            }
+        ];
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            initPage();
+        });
+
+        // 页面初始化函数
+        function initPage() {
+            // 显示加载提示
+            document.getElementById('loader').classList.add('active');
+            
+            // 延迟加载案例，模拟网络请求
+            setTimeout(() => {
+                renderCases(casesData);
+                updateCategoryCounts();
+                document.getElementById('loader').classList.remove('active');
+            }, 800);
+            
+            // 绑定筛选按钮事件
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    filterCases(filter);
+                    
+                    // 更新按钮状态
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // 绑定搜索事件
+            document.getElementById('searchBtn').addEventListener('click', performSearch);
+            document.getElementById('searchInput').addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // 绑定模态框关闭事件
+            document.getElementById('modalClose').addEventListener('click', closeModal);
+            document.getElementById('caseModal').addEventListener('click', function(event) {
+                if (event.target === this) {
+                    closeModal();
+                }
+            });
+        }
+
+        // 渲染案例卡片
+        function renderCases(cases) {
+            const casesGrid = document.getElementById('casesGrid');
+            casesGrid.innerHTML = '';
+            
+            if (cases.length === 0) {
+                document.getElementById('noResults').style.display = 'block';
+                updateCounts(0);
+                return;
+            }
+            
+            document.getElementById('noResults').style.display = 'none';
+            
+            cases.forEach(caseItem => {
+                const caseCard = createCaseCard(caseItem);
+                casesGrid.appendChild(caseCard);
+            });
+            
+            updateCounts(cases.length);
+        }
+
+        // 创建单个案例卡片
+        function createCaseCard(caseItem) {
+            const card = document.createElement('div');
+            card.className = 'case-card';
+            card.setAttribute('data-category', caseItem.category);
+            card.setAttribute('data-id', caseItem.id);
+            
+            // 获取分类显示名称
+            const categoryNames = {
+                'vocational': '职业教育',
+                'basic': '基础教育',
+                'curriculum': '课程改革',
+                'policy': '政策创新',
+                'digital': '数字转型'
+            };
+            
+            // 设置卡片颜色
+            const colorClass = `category-${caseItem.category}`;
+            
+            card.innerHTML = `
+                <div class="case-card-header">
+                    <div class="case-country">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>${caseItem.country}</span>
+                    </div>
+                    <div class="case-category ${colorClass}">
+                        <span>${categoryNames[caseItem.category] || caseItem.category}</span>
+                    </div>
+                </div>
+                <div class="case-content">
+                    <h3 class="case-title">${caseItem.title}</h3>
+                    <p class="case-description">${caseItem.description}</p>
+                    
+                    <div class="case-impact">
+                        <div class="impact-title">
+                            <i class="fas fa-chart-line"></i>
+                            <span>主要成效</span>
+                        </div>
+                        <p>${caseItem.impact}</p>
+                    </div>
+                    
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">${caseItem.stats.satisfaction}%</div>
+                            <div class="stat-label">满意度</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${caseItem.stats.employment || 'N/A'}${caseItem.stats.employment ? '%' : ''}</div>
+                            <div class="stat-label">就业率</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${caseItem.stats.skillMatch}%</div>
+                            <div class="stat-label">技能匹配</div>
+                        </div>
+                    </div>
+                    
+                    <div class="case-tags">
+                        ${caseItem.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    
+                    <div class="case-actions">
+                        <button class="detail-btn" data-id="${caseItem.id}">
+                            <i class="fas fa-search"></i>
+                            <span>查看详情</span>
+                        </button>
+                        <button class="compare-btn" data-id="${caseItem.id}">
+                            <i class="fas fa-balance-scale"></i>
+                            <span>加入对比</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // 绑定查看详情事件
+            card.querySelector('.detail-btn').addEventListener('click', function() {
+                const caseId = parseInt(this.getAttribute('data-id'));
+                showCaseDetail(caseId);
+            });
+            
+            // 绑定加入对比事件
+            card.querySelector('.compare-btn').addEventListener('click', function() {
+                const caseId = parseInt(this.getAttribute('data-id'));
+                addToComparison(caseId);
+            });
+            
+            return card;
+        }
+
+        // 筛选案例
+        function filterCases(category) {
+            let filteredCases;
+            
+            if (category === 'all') {
+                filteredCases = casesData;
+            } else {
+                filteredCases = casesData.filter(caseItem => caseItem.category === category);
+            }
+            
+            renderCases(filteredCases);
+        }
+
+        // 搜索案例
+        function performSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput.value.trim().toLowerCase();
+            
+            if (query === '') {
+                // 如果搜索框为空，显示当前筛选条件下的所有案例
+                const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+                filterCases(activeFilter);
+                return;
+            }
+            
+            // 获取当前筛选条件
+            const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+            
+            // 根据当前筛选条件过滤
+            let filteredCases;
+            if (activeFilter === 'all') {
+                filteredCases = casesData;
+            } else {
+                filteredCases = casesData.filter(caseItem => caseItem.category === activeFilter);
+            }
+            
+            // 在筛选结果中搜索
+            const searchResults = filteredCases.filter(caseItem => {
+                return caseItem.title.toLowerCase().includes(query) ||
+                       caseItem.description.toLowerCase().includes(query) ||
+                       caseItem.country.toLowerCase().includes(query) ||
+                       caseItem.tags.some(tag => tag.toLowerCase().includes(query));
+            });
+            
+            renderCases(searchResults);
+        }
+
+        // 显示案例详情
+        function showCaseDetail(caseId) {
+            const caseItem = casesData.find(c => c.id === caseId);
+            if (!caseItem) return;
+            
+            // 获取分类显示名称
+            const categoryNames = {
+                'vocational': '职业教育',
+                'basic': '基础教育',
+                'curriculum': '课程改革',
+                'policy': '政策创新',
+                'digital': '数字转型'
+            };
+            
+            // 设置分类颜色
+            const colorClass = `category-${caseItem.category}`;
+            
+            // 更新模态框内容
+            document.getElementById('modalTitle').textContent = caseItem.title;
+            document.getElementById('modalCountry').textContent = caseItem.country;
+            document.getElementById('modalCategory').className = `case-category ${colorClass}`;
+            document.getElementById('modalCategoryText').textContent = categoryNames[caseItem.category] || caseItem.category;
+            document.getElementById('modalDescription').textContent = caseItem.description;
+            document.getElementById('modalImpact').textContent = caseItem.impact;
+            document.getElementById('modalSatisfaction').textContent = `${caseItem.stats.satisfaction}%`;
+            document.getElementById('modalEmployment').textContent = caseItem.stats.employment ? `${caseItem.stats.employment}%` : 'N/A';
+            document.getElementById('modalSkillMatch').textContent = `${caseItem.stats.skillMatch}%`;
+            
+            // 更新标签
+            const tagsContainer = document.getElementById('modalTags');
+            tagsContainer.innerHTML = '';
+            caseItem.tags.forEach(tag => {
+                const tagElement = document.createElement('span');
+                tagElement.className = 'tag';
+                tagElement.textContent = tag;
+                tagsContainer.appendChild(tagElement);
+            });
+            
+            // 显示模态框
+            document.getElementById('caseModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('caseModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 添加到对比
+        function addToComparison(caseId) {
+            // 这里可以扩展对比功能
+            alert(`案例已添加到对比列表 (ID: ${caseId})`);
+            // 在实际应用中，您可以将案例ID存储到数组或本地存储中，然后在对比页面显示
+        }
+
+        // 更新分类计数
+        function updateCategoryCounts() {
+            const categories = ['vocational', 'basic', 'curriculum', 'policy', 'digital'];
+            
+            categories.forEach(category => {
+                const count = casesData.filter(caseItem => caseItem.category === category).length;
+                document.getElementById(`count-${category}`).textContent = count;
+            });
+            
+            // 更新全部计数
+            document.getElementById('count-all').textContent = casesData.length;
+        }
+
+        // 更新显示计数
+        function updateCounts(filteredCount) {
+            document.getElementById('visible-count').textContent = casesData.length;
+            document.getElementById('filtered-count').textContent = filteredCount;
+        }
+    </script>
+</body>
+</html>
