@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,51 +9,88 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/charts.css">
     <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/background.css">
     
     <!-- 字体和图标 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- 图表库 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
+    <!-- 动态背景 -->
+    <div id="particles-js"></div>
+    <div class="gradient-background"></div>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+    </div>
+    
     <!-- 导航栏 -->
-    <nav class="main-nav">
+    <nav class="main-nav glass">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <i class="fas fa-graduation-cap"></i>
-                <span>全球教育创新案例库</span>
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">全球教育创新案例库</span>
+                    <span class="logo-subtitle">Global Education Innovation Lab</span>
+                </div>
             </a>
             
             <div class="nav-menu">
-                <a href="#home" class="nav-link active">
-                    <i class="fas fa-home"></i> 首页
+                <a href="#home" class="nav-link active" data-text="首页">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text">首页</span>
+                    <div class="nav-hover"></div>
                 </a>
-                <a href="#data" class="nav-link">
-                    <i class="fas fa-chart-line"></i> 数据洞察
+                <a href="#data" class="nav-link" data-text="数据洞察">
+                    <i class="fas fa-chart-network"></i>
+                    <span class="nav-text">数据洞察</span>
+                    <div class="nav-hover"></div>
                 </a>
-                <a href="#cases" class="nav-link">
-                    <i class="fas fa-globe-americas"></i> 全球案例
+                <a href="#cases" class="nav-link" data-text="全球案例">
+                    <i class="fas fa-globe-americas"></i>
+                    <span class="nav-text">全球案例</span>
+                    <div class="nav-hover"></div>
                 </a>
-                <a href="#comparison" class="nav-link">
-                    <i class="fas fa-balance-scale"></i> 模式对比
+                <a href="#comparison" class="nav-link" data-text="模式对比">
+                    <i class="fas fa-balance-scale-right"></i>
+                    <span class="nav-text">模式对比</span>
+                    <div class="nav-hover"></div>
                 </a>
-                <a href="#framework" class="nav-link">
-                    <i class="fas fa-sitemap"></i> 分析框架
+                <a href="#framework" class="nav-link" data-text="分析框架">
+                    <i class="fas fa-sitemap"></i>
+                    <span class="nav-text">分析框架</span>
+                    <div class="nav-hover"></div>
                 </a>
-                <a href="#research" class="nav-link">
-                    <i class="fas fa-file-alt"></i> 研究报告
+                <a href="#research" class="nav-link" data-text="研究报告">
+                    <i class="fas fa-file-alt"></i>
+                    <span class="nav-text">研究报告</span>
+                    <div class="nav-hover"></div>
                 </a>
             </div>
             
             <div class="nav-actions">
-                <a href="index.html" class="btn-outline">
-                    <i class="fas fa-arrow-left"></i> 返回主站
+                <a href="index.html" class="btn-back glass">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>返回主站</span>
                 </a>
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
+                <div class="theme-toggle-wrapper">
+                    <button class="theme-toggle glass" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                        <span class="theme-text">暗色模式</span>
+                    </button>
+                </div>
+                <button class="nav-menu-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
@@ -64,12 +100,16 @@
     <main class="container">
         <!-- 英雄区域 -->
         <section id="home" class="hero-section">
-            <div class="hero-content">
-                <div class="hero-badge">2025全球教育创新报告</div>
+            <div class="hero-content animate-on-scroll" data-animation="fade-up">
+                <div class="hero-badge pulse">
+                    <i class="fas fa-star"></i>
+                    <span>2025全球教育创新报告</span>
+                    <div class="badge-glow"></div>
+                </div>
                 <h1 class="hero-title">
                     探索全球教育改革的
-                    <span class="highlight">创新路径</span>与
-                    <span class="highlight">实践智慧</span>
+                    <span class="highlight gradient-text">创新路径</span>与
+                    <span class="highlight gradient-text">实践智慧</span>
                 </h1>
                 <p class="hero-subtitle">
                     深度分析12个国家/地区的教育改革实践，涵盖职业、基础、高等及特殊教育领域，
@@ -77,45 +117,106 @@
                 </p>
                 
                 <div class="hero-stats">
-                    <div class="stat-item">
+                    <div class="stat-card glass animate-on-scroll" data-animation="fade-up" data-delay="100">
+                        <div class="stat-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
                         <div class="stat-number" data-count="12">0</div>
                         <div class="stat-label">国家/地区</div>
+                        <div class="stat-glow"></div>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-card glass animate-on-scroll" data-animation="fade-up" data-delay="200">
+                        <div class="stat-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
                         <div class="stat-number" data-count="45">0</div>
                         <div class="stat-label">创新案例</div>
+                        <div class="stat-glow"></div>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-card glass animate-on-scroll" data-animation="fade-up" data-delay="300">
+                        <div class="stat-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
                         <div class="stat-number" data-count="5">0</div>
                         <div class="stat-label">核心模式</div>
+                        <div class="stat-glow"></div>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-card glass animate-on-scroll" data-animation="fade-up" data-delay="400">
+                        <div class="stat-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
                         <div class="stat-number" data-count="5200">0</div>
                         <div class="stat-label">调研样本</div>
+                        <div class="stat-glow"></div>
                     </div>
+                </div>
+                
+                <div class="hero-actions">
+                    <a href="#cases" class="btn-primary glow">
+                        <i class="fas fa-play-circle"></i>
+                        探索案例
+                    </a>
+                    <a href="#research" class="btn-secondary glass">
+                        <i class="fas fa-download"></i>
+                        下载报告
+                    </a>
                 </div>
             </div>
             
             <div class="hero-visual">
-                <div class="globe-animation">
-                    <i class="fas fa-globe-americas"></i>
-                    <div class="orbit"></div>
-                    <div class="orbit orbit-2"></div>
+                <div class="hero-orbital">
+                    <div class="orbital-system">
+                        <div class="center-orb glow">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="orbit orbit-1">
+                            <div class="orbital-item">
+                                <i class="fas fa-school"></i>
+                            </div>
+                        </div>
+                        <div class="orbit orbit-2">
+                            <div class="orbital-item">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="orbital-item">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                        </div>
+                        <div class="orbit orbit-3">
+                            <div class="orbital-item">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div class="orbital-item">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="orbital-item">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 数据洞察部分 -->
         <section id="data" class="section">
-            <div class="section-header">
-                <h2><i class="fas fa-chart-bar"></i> 全球教育趋势数据洞察</h2>
+            <div class="section-header animate-on-scroll" data-animation="fade-up">
+                <div class="section-title-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-chart-network"></i>
+                    </div>
+                    <h2>全球教育趋势数据洞察</h2>
+                </div>
                 <p class="section-subtitle">基于2020-2024年国际教育数据与各国政策分析</p>
             </div>
             
-            <div class="data-controls">
+            <div class="data-controls glass animate-on-scroll" data-animation="fade-up" data-delay="100">
                 <div class="control-group">
-                    <label for="regionSelect"><i class="fas fa-map-marker-alt"></i> 选择地区:</label>
-                    <select id="regionSelect" class="control-select">
+                    <div class="control-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <label for="regionSelect">选择地区:</label>
+                    <select id="regionSelect" class="control-select glass">
                         <option value="global">全球趋势</option>
                         <option value="europe">欧洲地区</option>
                         <option value="asia">亚洲地区</option>
@@ -123,25 +224,51 @@
                     </select>
                 </div>
                 <div class="control-group">
-                    <label for="indicatorSelect"><i class="fas fa-filter"></i> 指标类型:</label>
-                    <select id="indicatorSelect" class="control-select">
+                    <div class="control-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <label for="indicatorSelect">指标类型:</label>
+                    <select id="indicatorSelect" class="control-select glass">
                         <option value="graduation">毕业生去向</option>
                         <option value="investment">教育投入</option>
                         <option value="wellbeing">学生福祉</option>
                         <option value="employment">就业匹配</option>
                     </select>
                 </div>
+                <button class="control-btn glass" id="resetControls">
+                    <i class="fas fa-redo"></i>
+                    重置
+                </button>
             </div>
             
             <div class="charts-grid">
                 <!-- 折线图容器 -->
-                <div class="chart-card">
+                <div class="chart-card glass animate-on-scroll" data-animation="fade-up" data-delay="150">
                     <div class="chart-header">
-                        <h3>高中毕业生去向趋势（2020-2024）</h3>
+                        <div class="chart-title">
+                            <h3>高中毕业生去向趋势（2020-2024）</h3>
+                            <div class="chart-actions">
+                                <button class="chart-action-btn" data-action="zoom">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                                <button class="chart-action-btn" data-action="download">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
                         <div class="chart-legend">
-                            <span class="legend-item" style="background-color: #1a56db;"></span>普通高校
-                            <span class="legend-item" style="background-color: #f59e0b;"></span>职业院校
-                            <span class="legend-item" style="background-color: #10b981;"></span>直接就业
+                            <span class="legend-item">
+                                <span class="legend-color" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></span>
+                                普通高校
+                            </span>
+                            <span class="legend-item">
+                                <span class="legend-color" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></span>
+                                职业院校
+                            </span>
+                            <span class="legend-item">
+                                <span class="legend-color" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></span>
+                                直接就业
+                            </span>
                         </div>
                     </div>
                     <div class="chart-container">
@@ -150,9 +277,10 @@
                 </div>
                 
                 <!-- 雷达图容器 -->
-                <div class="chart-card">
+                <div class="chart-card glass animate-on-scroll" data-animation="fade-up" data-delay="200">
                     <div class="chart-header">
                         <h3>各国教育改革成效对比</h3>
+                        <div class="chart-badge">多维度分析</div>
                     </div>
                     <div class="chart-container">
                         <canvas id="radarChart"></canvas>
@@ -160,9 +288,14 @@
                 </div>
                 
                 <!-- 堆叠柱状图 -->
-                <div class="chart-card full-width">
+                <div class="chart-card full-width glass animate-on-scroll" data-animation="fade-up" data-delay="250">
                     <div class="chart-header">
                         <h3>教育投入分配国际比较（2024年）</h3>
+                        <div class="chart-filters">
+                            <button class="filter-btn active" data-filter="all">全部</button>
+                            <button class="filter-btn" data-filter="public">公共投入</button>
+                            <button class="filter-btn" data-filter="private">私人投入</button>
+                        </div>
                     </div>
                     <div class="chart-container">
                         <canvas id="barChart"></canvas>
@@ -173,116 +306,278 @@
 
         <!-- 全球案例展示 -->
         <section id="cases" class="section">
-            <div class="section-header">
-                <h2><i class="fas fa-globe"></i> 全球创新案例库</h2>
+            <div class="section-header animate-on-scroll" data-animation="fade-up">
+                <div class="section-title-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h2>全球创新案例库</h2>
+                </div>
                 <p class="section-subtitle">点击案例卡片查看详细分析、实施机制与本地化建议</p>
             </div>
             
-            <div class="cases-filter">
-                <button class="filter-btn active" data-category="all">全部案例</button>
-                <button class="filter-btn" data-category="vocational">职业教育</button>
-                <button class="filter-btn" data-category="basic">基础教育</button>
-                <button class="filter-btn" data-category="curriculum">课程改革</button>
-                <button class="filter-btn" data-category="policy">政策创新</button>
+            <div class="cases-filter glass animate-on-scroll" data-animation="fade-up" data-delay="100">
+                <button class="filter-btn active" data-category="all">
+                    <i class="fas fa-layer-group"></i>
+                    <span>全部案例</span>
+                    <span class="filter-count">45</span>
+                </button>
+                <button class="filter-btn" data-category="vocational">
+                    <i class="fas fa-industry"></i>
+                    <span>职业教育</span>
+                    <span class="filter-count">15</span>
+                </button>
+                <button class="filter-btn" data-category="basic">
+                    <i class="fas fa-school"></i>
+                    <span>基础教育</span>
+                    <span class="filter-count">12</span>
+                </button>
+                <button class="filter-btn" data-category="curriculum">
+                    <i class="fas fa-book-open"></i>
+                    <span>课程改革</span>
+                    <span class="filter-count">10</span>
+                </button>
+                <button class="filter-btn" data-category="policy">
+                    <i class="fas fa-landmark"></i>
+                    <span>政策创新</span>
+                    <span class="filter-count">8</span>
+                </button>
             </div>
             
             <div class="cases-grid" id="casesContainer">
                 <!-- 案例卡片将通过JavaScript动态生成 -->
             </div>
             
-            <div class="text-center">
-                <button class="btn-load-more" id="loadMoreCases">
-                    <i class="fas fa-sync-alt"></i> 加载更多案例
+            <div class="text-center animate-on-scroll" data-animation="fade-up">
+                <button class="btn-load-more glow" id="loadMoreCases">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>加载更多案例</span>
+                    <div class="btn-glow"></div>
                 </button>
             </div>
         </section>
 
         <!-- 模式对比分析 -->
         <section id="comparison" class="section">
-            <div class="section-header">
-                <h2><i class="fas fa-balance-scale"></i> 创新模式对比分析</h2>
+            <div class="section-header animate-on-scroll" data-animation="fade-up">
+                <div class="section-title-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-balance-scale-right"></i>
+                    </div>
+                    <h2>创新模式对比分析</h2>
+                </div>
                 <p class="section-subtitle">五大核心改革模式的实施效果、适用条件与迁移风险</p>
             </div>
             
-            <div class="comparison-tabs">
-                <div class="tab-buttons">
-                    <button class="tab-btn active" data-tab="dual">双元制模式</button>
-                    <button class="tab-btn" data-tab="pbl">项目式学习</button>
-                    <button class="tab-btn" data-tab="phenomenon">现象教学</button>
-                    <button class="tab-btn" data-tab="competency">能力导向</button>
-                    <button class="tab-btn" data-tab="digital">数字转型</button>
-                </div>
-                
-                <div class="tab-content active" id="dual-tab">
-                    <div class="comparison-content">
-                        <div class="comparison-chart">
-                            <canvas id="comparisonChart1"></canvas>
-                        </div>
-                        <div class="comparison-details">
-                            <h4><i class="fas fa-industry"></i> 双元制职业教育模式</h4>
-                            <div class="comparison-stats">
-                                <div class="stat">
-                                    <div class="stat-value">87%</div>
-                                    <div class="stat-label">企业满意度</div>
+            <div class="comparison-container glass animate-on-scroll" data-animation="fade-up">
+                <div class="comparison-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="dual">
+                            <i class="fas fa-industry"></i>
+                            <span>双元制模式</span>
+                            <div class="tab-indicator"></div>
+                        </button>
+                        <button class="tab-btn" data-tab="pbl">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>项目式学习</span>
+                            <div class="tab-indicator"></div>
+                        </button>
+                        <button class="tab-btn" data-tab="phenomenon">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>现象教学</span>
+                            <div class="tab-indicator"></div>
+                        </button>
+                        <button class="tab-btn" data-tab="competency">
+                            <i class="fas fa-trophy"></i>
+                            <span>能力导向</span>
+                            <div class="tab-indicator"></div>
+                        </button>
+                        <button class="tab-btn" data-tab="digital">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>数字转型</span>
+                            <div class="tab-indicator"></div>
+                        </button>
+                    </div>
+                    
+                    <div class="tab-content active" id="dual-tab">
+                        <div class="comparison-content">
+                            <div class="comparison-chart">
+                                <canvas id="comparisonChart1"></canvas>
+                            </div>
+                            <div class="comparison-details">
+                                <div class="comparison-header">
+                                    <h4><i class="fas fa-industry"></i> 双元制职业教育模式</h4>
+                                    <div class="comparison-badge success">高度可复制</div>
                                 </div>
-                                <div class="stat">
-                                    <div class="stat-value">5.2%</div>
-                                    <div class="stat-label">青年失业率</div>
+                                
+                                <div class="comparison-stats">
+                                    <div class="stat-circle">
+                                        <div class="circle-progress" data-value="87">
+                                            <svg viewBox="0 0 100 100">
+                                                <circle class="circle-bg" cx="50" cy="50" r="45"></circle>
+                                                <circle class="circle-progress-bar" cx="50" cy="50" r="45"></circle>
+                                            </svg>
+                                            <div class="circle-value">87%</div>
+                                        </div>
+                                        <div class="circle-label">企业满意度</div>
+                                    </div>
+                                    <div class="stat-circle">
+                                        <div class="circle-progress" data-value="94">
+                                            <svg viewBox="0 0 100 100">
+                                                <circle class="circle-bg" cx="50" cy="50" r="45"></circle>
+                                                <circle class="circle-progress-bar" cx="50" cy="50" r="45"></circle>
+                                            </svg>
+                                            <div class="circle-value">94%</div>
+                                        </div>
+                                        <div class="circle-label">毕业生就业率</div>
+                                    </div>
+                                    <div class="stat-circle">
+                                        <div class="circle-progress" data-value="76">
+                                            <svg viewBox="0 0 100 100">
+                                                <circle class="circle-bg" cx="50" cy="50" r="45"></circle>
+                                                <circle class="circle-progress-bar" cx="50" cy="50" r="45"></circle>
+                                            </svg>
+                                            <div class="circle-value">76%</div>
+                                        </div>
+                                        <div class="circle-label">技能匹配度</div>
+                                    </div>
                                 </div>
-                                <div class="stat">
-                                    <div class="stat-value">65%</div>
-                                    <div class="stat-label">毕业生留用率</div>
+                                
+                                <div class="comparison-features">
+                                    <div class="feature">
+                                        <div class="feature-icon success">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h5>核心特征</h5>
+                                            <p>法律保障、行业主导、校企双主体、理论与实践结合</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature">
+                                        <div class="feature-icon warning">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h5>最佳实践地区</h5>
+                                            <p>德国、瑞士、奥地利、丹麦</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature">
+                                        <div class="feature-icon info">
+                                            <i class="fas fa-cogs"></i>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h5>迁移条件</h5>
+                                            <p>完善的行业组织、企业参与意愿、标准化体系、政策支持</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature">
+                                        <div class="feature-icon danger">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                        <div class="feature-content">
+                                            <h5>潜在风险</h5>
+                                            <p>中小企业负担、学术化倾向、地区差异、教师转型困难</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <ul class="comparison-list">
-                                <li><strong>核心特征：</strong>法律保障、行业主导、校企双主体</li>
-                                <li><strong>最佳实践：</strong>德国、瑞士、奥地利</li>
-                                <li><strong>迁移条件：</strong>完善的行业组织、企业参与意愿、标准化体系</li>
-                                <li><strong>潜在风险：</strong>中小企业负担、学术化倾向、地区差异</li>
-                            </ul>
                         </div>
                     </div>
+                    
+                    <!-- 其他标签页内容 -->
                 </div>
-                
-                <!-- 其他标签页内容类似，已省略 -->
             </div>
         </section>
 
         <!-- 分析框架与流程图 -->
         <section id="framework" class="section">
-            <div class="section-header">
-                <h2><i class="fas fa-sitemap"></i> 教育创新分析框架</h2>
+            <div class="section-header animate-on-scroll" data-animation="fade-up">
+                <div class="section-title-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h2>教育创新分析框架</h2>
+                </div>
                 <p class="section-subtitle">系统性评估、设计与实施教育改革的工具与方法论</p>
             </div>
             
-            <div class="framework-diagram">
+            <div class="framework-diagram glass animate-on-scroll" data-animation="fade-up">
                 <div class="flowchart">
                     <div class="flow-step step-1">
-                        <div class="step-icon"><i class="fas fa-search"></i></div>
+                        <div class="step-number">01</div>
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                            <div class="step-glow"></div>
+                        </div>
                         <h4>问题诊断</h4>
                         <p>结构性分析、需求评估、痛点识别</p>
+                        <div class="step-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </div>
-                    <div class="flow-arrow">→</div>
+                    
+                    <div class="flow-connector">
+                        <div class="connector-line"></div>
+                    </div>
+                    
                     <div class="flow-step step-2">
-                        <div class="step-icon"><i class="fas fa-globe"></i></div>
+                        <div class="step-number">02</div>
+                        <div class="step-icon">
+                            <i class="fas fa-globe"></i>
+                            <div class="step-glow"></div>
+                        </div>
                         <h4>国际对标</h4>
                         <p>案例筛选、模式分析、条件匹配</p>
+                        <div class="step-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </div>
-                    <div class="flow-arrow">→</div>
+                    
+                    <div class="flow-connector">
+                        <div class="connector-line"></div>
+                    </div>
+                    
                     <div class="flow-step step-3">
-                        <div class="step-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="step-number">03</div>
+                        <div class="step-icon">
+                            <i class="fas fa-cogs"></i>
+                            <div class="step-glow"></div>
+                        </div>
                         <h4>机制设计</h4>
                         <p>政策工具、实施路径、保障措施</p>
+                        <div class="step-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </div>
-                    <div class="flow-arrow">→</div>
+                    
+                    <div class="flow-connector">
+                        <div class="connector-line"></div>
+                    </div>
+                    
                     <div class="flow-step step-4">
-                        <div class="step-icon"><i class="fas fa-flask"></i></div>
+                        <div class="step-number">04</div>
+                        <div class="step-icon">
+                            <i class="fas fa-flask"></i>
+                            <div class="step-glow"></div>
+                        </div>
                         <h4>试点验证</h4>
                         <p>小范围测试、效果评估、迭代优化</p>
+                        <div class="step-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </div>
-                    <div class="flow-arrow">→</div>
+                    
+                    <div class="flow-connector">
+                        <div class="connector-line"></div>
+                    </div>
+                    
                     <div class="flow-step step-5">
-                        <div class="step-icon"><i class="fas fa-expand-arrows-alt"></i></div>
+                        <div class="step-number">05</div>
+                        <div class="step-icon">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                            <div class="step-glow"></div>
+                        </div>
                         <h4>推广复制</h4>
                         <p>规模化实施、监测评估、持续改进</p>
                     </div>
@@ -290,71 +585,159 @@
             </div>
             
             <div class="framework-grid">
-                <div class="framework-card">
-                    <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
+                <div class="framework-card glass animate-on-scroll" data-animation="fade-up" data-delay="100">
+                    <div class="card-icon">
+                        <i class="fas fa-balance-scale"></i>
+                        <div class="icon-glow"></div>
+                    </div>
                     <h4>SWOT-PESTEL分析矩阵</h4>
                     <p>结合内部优势劣势与外部政治、经济、社会、技术、环境、法律因素的综合分析工具</p>
-                    <a href="#" class="card-link">查看模板 <i class="fas fa-arrow-right"></i></a>
+                    <div class="card-tags">
+                        <span class="tag">分析工具</span>
+                        <span class="tag">战略规划</span>
+                    </div>
+                    <a href="#" class="card-link">
+                        <span>查看模板</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="framework-card">
-                    <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
+                
+                <div class="framework-card glass animate-on-scroll" data-animation="fade-up" data-delay="200">
+                    <div class="card-icon">
+                        <i class="fas fa-project-diagram"></i>
+                        <div class="icon-glow"></div>
+                    </div>
                     <h4>变革逻辑模型</h4>
                     <p>从输入、活动、输出到成果、影响的完整变革理论链条与因果假设</p>
-                    <a href="#" class="card-link">查看模板 <i class="fas fa-arrow-right"></i></a>
+                    <div class="card-tags">
+                        <span class="tag">理论模型</span>
+                        <span class="tag">评估框架</span>
+                    </div>
+                    <a href="#" class="card-link">
+                        <span>查看模板</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="framework-card">
-                    <div class="card-icon"><i class="fas fa-chart-network"></i></div>
+                
+                <div class="framework-card glass animate-on-scroll" data-animation="fade-up" data-delay="300">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-network"></i>
+                        <div class="icon-glow"></div>
+                    </div>
                     <h4>利益相关者分析图</h4>
                     <p>识别关键参与者、分析其利益诉求、影响力及相互关系</p>
-                    <a href="#" class="card-link">查看模板 <i class="fas fa-arrow-right"></i></a>
+                    <div class="card-tags">
+                        <span class="tag">关系分析</span>
+                        <span class="tag">沟通策略</span>
+                    </div>
+                    <a href="#" class="card-link">
+                        <span>查看模板</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
         <!-- 研究报告下载 -->
         <section id="research" class="section">
-            <div class="section-header">
-                <h2><i class="fas fa-file-pdf"></i> 研究报告与资源下载</h2>
+            <div class="section-header animate-on-scroll" data-animation="fade-up">
+                <div class="section-title-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h2>研究报告与资源下载</h2>
+                </div>
                 <p class="section-subtitle">完整研究报告、数据包、分析工具与实施指南</p>
             </div>
             
             <div class="resources-grid">
-                <div class="resource-card">
-                    <div class="resource-icon"><i class="fas fa-book"></i></div>
+                <div class="resource-card glass animate-on-scroll" data-animation="fade-up" data-delay="100">
+                    <div class="resource-header">
+                        <div class="resource-icon">
+                            <i class="fas fa-book"></i>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <div class="resource-badge best">推荐</div>
+                    </div>
                     <h4>《全球教育创新案例汇编（2025）》</h4>
                     <p>包含45个详细案例，涵盖12个国家，每个案例包含背景、机制、数据、启示四部分</p>
                     <div class="resource-meta">
-                        <span><i class="fas fa-file-pdf"></i> PDF, 3.2MB</span>
-                        <span><i class="fas fa-clock"></i> 2025-12-15更新</span>
+                        <span class="meta-item">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>PDF, 3.2MB</span>
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>2025-12-15更新</span>
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-eye"></i>
+                            <span>1.2k次下载</span>
+                        </span>
                     </div>
-                    <a href="assets/pdfs/全球教育创新案例汇编2025.pdf" class="btn-download" download>
-                        <i class="fas fa-download"></i> 下载报告
+                    <a href="assets/pdfs/全球教育创新案例汇编2025.pdf" class="btn-download glow" download>
+                        <i class="fas fa-download"></i>
+                        <span>下载报告</span>
                     </a>
                 </div>
                 
-                <div class="resource-card">
-                    <div class="resource-icon"><i class="fas fa-database"></i></div>
+                <div class="resource-card glass animate-on-scroll" data-animation="fade-up" data-delay="200">
+                    <div class="resource-header">
+                        <div class="resource-icon">
+                            <i class="fas fa-database"></i>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <div class="resource-badge new">最新</div>
+                    </div>
                     <h4>教育创新数据库（Excel）</h4>
                     <p>包含5200份问卷原始数据、各国教育指标时间序列、案例编码手册</p>
                     <div class="resource-meta">
-                        <span><i class="fas fa-file-excel"></i> Excel, 8.7MB</span>
-                        <span><i class="fas fa-table"></i> 15个工作表</span>
+                        <span class="meta-item">
+                            <i class="fas fa-file-excel"></i>
+                            <span>Excel, 8.7MB</span>
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-table"></i>
+                            <span>15个工作表</span>
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>5个分析模板</span>
+                        </span>
                     </div>
-                    <a href="assets/pdfs/教育创新数据库.xlsx" class="btn-download" download>
-                        <i class="fas fa-download"></i> 下载数据
+                    <a href="assets/pdfs/教育创新数据库.xlsx" class="btn-download glow" download>
+                        <i class="fas fa-download"></i>
+                        <span>下载数据</span>
                     </a>
                 </div>
                 
-                <div class="resource-card">
-                    <div class="resource-icon"><i class="fas fa-tools"></i></div>
+                <div class="resource-card glass animate-on-scroll" data-animation="fade-up" data-delay="300">
+                    <div class="resource-header">
+                        <div class="resource-icon">
+                            <i class="fas fa-tools"></i>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <div class="resource-badge popular">热门</div>
+                    </div>
                     <h4>教育改革工具箱</h4>
                     <p>SWOT分析模板、变革逻辑模型、利益相关者地图、风险评估矩阵等实用工具</p>
                     <div class="resource-meta">
-                        <span><i class="fas fa-folder"></i> ZIP, 5.1MB</span>
-                        <span><i class="fas fa-cube"></i> 8个工具</span>
+                        <span class="meta-item">
+                            <i class="fas fa-folder"></i>
+                            <span>ZIP, 5.1MB</span>
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-cube"></i>
+                            <span>8个工具</span>
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>团队协作</span>
+                        </span>
                     </div>
-                    <a href="assets/pdfs/教育改革工具箱.zip" class="btn-download" download>
-                        <i class="fas fa-download"></i> 下载工具箱
+                    <a href="assets/pdfs/教育改革工具箱.zip" class="btn-download glow" download>
+                        <i class="fas fa-download"></i>
+                        <span>下载工具箱</span>
                     </a>
                 </div>
             </div>
@@ -364,48 +747,87 @@
     <!-- 页脚 -->
     <footer class="main-footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-content glass">
                 <div class="footer-section">
-                    <h4><i class="fas fa-graduation-cap"></i> 全球教育创新案例研究中心</h4>
-                    <p>致力于收集、分析与传播全球教育创新最佳实践，为教育改革提供数据支撑与智力支持。</p>
+                    <div class="footer-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div class="footer-logo-text">
+                            <h4>全球教育创新案例研究中心</h4>
+                            <p>探索教育未来，赋能创新实践</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">致力于收集、分析与传播全球教育创新最佳实践，为教育改革提供数据支撑与智力支持。</p>
                     <div class="social-links">
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" aria-label="学术网"><i class="fas fa-graduation-cap"></i></a>
-                        <a href="#" aria-label="邮箱"><i class="fas fa-envelope"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="学术网">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="邮箱">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <div class="footer-section">
                     <h4>核心研究领域</h4>
                     <ul class="footer-links">
-                        <li><a href="#">职业教育创新</a></li>
-                        <li><a href="#">课程与教学改革</a></li>
-                        <li><a href="#">教育评价体系</a></li>
-                        <li><a href="#">教育数字化转型</a></li>
-                        <li><a href="#">国际教育比较</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 职业教育创新</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 课程与教学改革</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 教育评价体系</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 教育数字化转型</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 国际教育比较</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h4>联系与合作</h4>
-                    <p><i class="fas fa-user"></i> 负责人：游海洋 学者</p>
-                    <p><i class="fas fa-envelope"></i> 邮箱：youhaiyang@stu.hbnu.edu.cn</p>
-                    <p><i class="fas fa-phone"></i> 研究咨询：请通过邮箱预约</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 学术支持：知行教育研究课题组</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-user"></i> 负责人：游海洋 学者</p>
+                        <p><i class="fas fa-envelope"></i> 邮箱：youhaiyang@stu.hbnu.edu.cn</p>
+                        <p><i class="fas fa-phone"></i> 研究咨询：请通过邮箱预约</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 学术支持：知行教育研究课题组</p>
+                    </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>© 2025 全球教育创新案例研究中心 保留所有权利 | 数据来源：OECD, UNESCO, 各国教育部统计年鉴，课题组专项调研</p>
-                <p class="footer-version">版本 2.1.0 | 最后更新：2025年12月15日 | 访问量：<span id="visitCount">1,428</span></p>
+                <div class="footer-stats">
+                    <div class="footer-stat">
+                        <i class="fas fa-eye"></i>
+                        <span>访问量：<span id="visitCount">1,428</span></span>
+                    </div>
+                    <div class="footer-stat">
+                        <i class="fas fa-clock"></i>
+                        <span>最后更新：2025年12月15日</span>
+                    </div>
+                    <div class="footer-stat">
+                        <i class="fas fa-code-branch"></i>
+                        <span>版本 3.0.0</span>
+                    </div>
+                </div>
+                <p class="copyright">© 2025 全球教育创新案例研究中心 保留所有权利 | 数据来源：OECD, UNESCO, 各国教育部统计年鉴，课题组专项调研</p>
             </div>
         </div>
     </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- 脚本文件 -->
     <script src="js/main.js"></script>
     <script src="js/charts.js"></script>
     <script src="js/cases.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/background.js"></script>
 </body>
 </html>
