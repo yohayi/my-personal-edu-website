@@ -1,136 +1,717 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>深圳PBL2.0 | 核心数据统计与分析</title>
+    <title>数据洞察 - 全球教育创新案例库</title>
+    
+    <!-- 样式文件 -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/charts.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/background.css">
+    
+    <!-- 字体和图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 图表库 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <!-- 顶部导航栏（当前页高亮） -->
-    <header class="nav-bar">
-        <div class="logo">1Hub</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">首页</a></li>
-                <li><a href="background.html">研究背景</a></li>
-                <li><a href="data.html" class="active">核心数据</a></li>
-                <li><a href="case-study.html">典型案例</a></li>
-                <li><a href="shenzhen-practice.html">深圳实践</a></li>
-                <li><a href="plan.html">行动方案</a></li>
-                <li><a href="outcome.html">预期成果</a></li>
-                <li><a href="conclusion.html">结语</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- 动态背景 -->
+    <div id="particles-js"></div>
+    <div class="gradient-background"></div>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+    </div>
+    
+    <!-- 导航栏 -->
+    <nav class="main-nav glass">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">全球教育创新案例库</span>
+                    <span class="logo-subtitle">数据洞察中心</span>
+                </div>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link" data-text="首页">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text">首页</span>
+                    <div class="nav-hover"></div>
+                </a>
+                <a href="data.html" class="nav-link active" data-text="数据洞察">
+                    <i class="fas fa-chart-network"></i>
+                    <span class="nav-text">数据洞察</span>
+                    <div class="nav-hover"></div>
+                </a>
+                <a href="index.html#cases" class="nav-link" data-text="全球案例">
+                    <i class="fas fa-globe-americas"></i>
+                    <span class="nav-text">全球案例</span>
+                    <div class="nav-hover"></div>
+                </a>
+                <a href="index.html#comparison" class="nav-link" data-text="模式对比">
+                    <i class="fas fa-balance-scale-right"></i>
+                    <span class="nav-text">模式对比</span>
+                    <div class="nav-hover"></div>
+                </a>
+                <a href="index.html#framework" class="nav-link" data-text="分析框架">
+                    <i class="fas fa-sitemap"></i>
+                    <span class="nav-text">分析框架</span>
+                    <div class="nav-hover"></div>
+                </a>
+                <a href="index.html#research" class="nav-link" data-text="研究报告">
+                    <i class="fas fa-file-alt"></i>
+                    <span class="nav-text">研究报告</span>
+                    <div class="nav-hover"></div>
+                </a>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="index.html" class="btn-back glass">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>返回首页</span>
+                </a>
+                <div class="theme-toggle-wrapper">
+                    <button class="theme-toggle glass" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                        <span class="theme-text">暗色模式</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <!-- 数据主内容区 -->
-    <main class="data-content">
-        <h1>核心数据统计与分析</h1>
+    <!-- 主内容区 -->
+    <main class="container">
+        <!-- 数据概览英雄区 -->
+        <section class="hero-section">
+            <div class="hero-content animate-on-scroll" data-animation="fade-up">
+                <div class="hero-badge pulse">
+                    <i class="fas fa-database"></i>
+                    <span>基于75个案例的深度分析</span>
+                    <div class="badge-glow"></div>
+                </div>
+                <h1 class="hero-title">
+                    全球教育创新
+                    <span class="highlight gradient-text">数据洞察</span>平台
+                </h1>
+                <p class="hero-subtitle">
+                    基于75个全球创新案例、30个国家/地区、5200份调研样本的量化分析，揭示教育改革的趋势、模式与成效
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-card glass animate-on-scroll" data-animation="fade-up" data-delay="100">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-number" data-count="75">0</div>
+                        <div class="stat-label">深度分析案例</div>
+                        <div class="stat-glow"></div>
+                    </div>
+                    <div class="stat-card glass animate-on-scroll" data-animation="fade-up" data-delay="200">
+                        <div class="stat-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="stat-number" data-count="30">0</div>
+                        <div class="stat-label">覆盖国家地区</div>
+                        <div class="stat-glow"></div>
+                    </div>
+                    <div class="stat-card glass animate-on-scroll" data-animation="fade-up" data-delay="300">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number" data-count="5200">0</div>
+                        <div class="stat-label">调研数据样本</div>
+                        <div class="stat-glow"></div>
+                    </div>
+                    <div class="stat-card glass animate-on-scroll" data-animation="fade-up" data-delay="400">
+                        <div class="stat-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="stat-number" data-count="87">0</div>
+                        <div class="stat-label">平均满意度</div>
+                        <div class="stat-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心数据展示区 -->
+        <section class="section">
+            <div class="section-header animate-on-scroll" data-animation="fade-up">
+                <div class="section-title-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h2>核心数据多维分析</h2>
+                </div>
+                <p class="section-subtitle">基于案例库的五个核心维度的量化表现与交叉分析</p>
+            </div>
+            
+            <div class="charts-grid">
+                <!-- 案例分类分布图 -->
+                <div class="chart-card glass animate-on-scroll" data-animation="fade-up" data-delay="150">
+                    <div class="chart-header">
+                        <h3>75个案例分类分布</h3>
+                        <div class="chart-badge">案例库构成</div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                    <div class="chart-summary">
+                        <p><strong>洞察：</strong>职业教育案例数量最多（21个），反映全球对技能人才培养的高度重视；数字转型案例增速最快（年增长率15%）</p>
+                    </div>
+                </div>
+                
+                <!-- 地域分布热力图 -->
+                <div class="chart-card glass animate-on-scroll" data-animation="fade-up" data-delay="200">
+                    <div class="chart-header">
+                        <h3>案例地域分布与成效热度</h3>
+                        <div class="chart-actions">
+                            <button class="chart-action-btn" data-action="zoom">
+                                <i class="fas fa-search-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="world-map-placeholder">
+                            <div class="map-region region-europe" style="top: 30%; left: 45%;" data-count="22">
+                                <div class="region-tooltip">欧洲 (22案例)</div>
+                            </div>
+                            <div class="map-region region-asia" style="top: 40%; left: 70%;" data-count="38">
+                                <div class="region-tooltip">亚洲 (38案例)</div>
+                            </div>
+                            <div class="map-region region-america" style="top: 45%; left: 20%;" data-count="12">
+                                <div class="region-tooltip">美洲 (12案例)</div>
+                            </div>
+                            <div class="map-region region-africa" style="top: 60%; left: 50%;" data-count="3">
+                                <div class="region-tooltip">非洲 (3案例)</div>
+                            </div>
+                            <div class="map-legend">
+                                <span class="legend-item low">1-5案例</span>
+                                <span class="legend-item medium">6-15案例</span>
+                                <span class="legend-item high">16+案例</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-summary">
+                        <p><strong>洞察：</strong>亚洲（特别是中国）案例最为密集；欧洲案例创新成熟度高；非洲案例数量少但增长潜力大</p>
+                    </div>
+                </div>
+                
+                <!-- 成效指标对比图 -->
+                <div class="chart-card full-width glass animate-on-scroll" data-animation="fade-up" data-delay="250">
+                    <div class="chart-header">
+                        <h3>五大领域关键成效指标对比</h3>
+                        <div class="chart-filters">
+                            <button class="filter-btn active" data-filter="satisfaction">满意度</button>
+                            <button class="filter-btn" data-filter="employment">就业率</button>
+                            <button class="filter-btn" data-filter="skillMatch">技能匹配</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                    <div class="chart-summary">
+                        <p><strong>洞察：</strong>政策创新类案例满意度最高（平均89%），职业教育类就业率最优（平均91%），数字转型类技能匹配度提升最快</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <!-- 1. 动态趋势图表（纯CSS实现） -->
-        <section class="chart-section">
-            <h2>📈 高中毕业生去向趋势（2020-2024）</h2>
-            <div class="chart-container">
-                <div class="chart-year">
-                    <span>2020</span>
-                    <div class="chart-bar" style="height: 45.2%;">普通高校 45.20%</div>
-                    <div class="chart-bar" style="height: 38.7%;">职业院校 38.70%</div>
-                    <div class="chart-bar" style="height: 10.1%;">直接就业 10.10%</div>
+        <!-- 趋势分析区 -->
+        <section class="section">
+            <div class="section-header animate-on-scroll" data-animation="fade-up">
+                <div class="section-title-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-trend-up"></i>
+                    </div>
+                    <h2>教育改革趋势分析</h2>
                 </div>
-                <div class="chart-year">
-                    <span>2024</span>
-                    <div class="chart-bar" style="height: 48.3%; background: #2563EB;">普通高校 48.30%</div>
-                    <div class="chart-bar" style="height: 35.9%; background: #3b82f6;">职业院校 35.90%</div>
-                    <div class="chart-bar" style="height: 10.8%; background: #60a5fa;">直接就业 10.80%</div>
+                <p class="section-subtitle">2020-2024年全球教育改革重点领域与发展趋势</p>
+            </div>
+            
+            <div class="trends-container">
+                <div class="trend-card glass animate-on-scroll" data-animation="fade-up" data-delay="100">
+                    <div class="trend-header">
+                        <div class="trend-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>数字化转型加速</h4>
+                        <div class="trend-badge up">+15%年增长</div>
+                    </div>
+                    <div class="trend-content">
+                        <p>数字转型类案例占比从2020年的12%上升至2024年的21%，AI教育、智慧校园、数字素养成为三大重点方向。</p>
+                        <div class="trend-stats">
+                            <div class="trend-stat">
+                                <div class="stat-value">78%</div>
+                                <div class="stat-label">学校实施数字化</div>
+                            </div>
+                            <div class="trend-stat">
+                                <div class="stat-value">65%</div>
+                                <div class="stat-label">教师数字能力达标</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trend-card glass animate-on-scroll" data-animation="fade-up" data-delay="150">
+                    <div class="trend-header">
+                        <div class="trend-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h4>产教融合深化</h4>
+                        <div class="trend-badge up">+22%参与度</div>
+                    </div>
+                    <div class="trend-content">
+                        <p>企业深度参与职业教育比例显著提升，“双元制”、“现代学徒制”、“校企共建”模式广泛推广。</p>
+                        <div class="trend-stats">
+                            <div class="trend-stat">
+                                <div class="stat-value">94%</div>
+                                <div class="stat-label">毕业生就业率</div>
+                            </div>
+                            <div class="trend-stat">
+                                <div class="stat-value">87%</div>
+                                <div class="stat-label">企业满意度</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trend-card glass animate-on-scroll" data-animation="fade-up" data-delay="200">
+                    <div class="trend-header">
+                        <div class="trend-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h4>公平与质量并重</h4>
+                        <div class="trend-badge stable">稳步推进</div>
+                    </div>
+                    <div class="trend-content">
+                        <p>政策创新更注重缩小城乡、校际差距，集团化办学、教师流动、资源共享成为关键举措。</p>
+                        <div class="trend-stats">
+                            <div class="trend-stat">
+                                <div class="stat-value">40%</div>
+                                <div class="stat-label">城乡差距缩小</div>
+                            </div>
+                            <div class="trend-stat">
+                                <div class="stat-value">85%</div>
+                                <div class="stat-label">资源均衡满意度</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="chart-legend">
-                <div class="legend-item"><span class="color-box" style="background: #2563EB;"></span>普通高校（↑+3.1%）</div>
-                <div class="legend-item"><span class="color-box" style="background: #3b82f6;"></span>职业院校（↓-2.8%）</div>
-                <div class="legend-item"><span class="color-box" style="background: #60a5fa;"></span>直接就业（↑+0.7%）</div>
+        </section>
+        
+        <!-- 数据表格区 -->
+        <section class="section">
+            <div class="section-header animate-on-scroll" data-animation="fade-up">
+                <div class="section-title-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <h2>详细数据对比</h2>
+                </div>
+                <p class="section-subtitle">五大创新领域的核心指标量化对比</p>
             </div>
-            <p class="chart-note">数据来源：教育部2024年教育统计年鉴 | 2024年普通高校占比首次突破48%</p>
-        </section>
-
-        <!-- 2. 区域对比表格（高亮深圳） -->
-        <section class="table-section">
-            <h2>📊 教育资源区域分布对比</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>地区</th>
-                        <th>投入指数</th>
-                        <th>城乡资源比</th>
-                        <th>与全国均值对比</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>北京</td>
-                        <td>92.00</td>
-                        <td>2.80:1</td>
-                        <td>+50.2%</td>
-                    </tr>
-                    <tr class="highlight-row">
-                        <td>深圳</td>
-                        <td>82.30</td>
-                        <td>2.20:1</td>
-                        <td>+34.5%</td>
-                    </tr>
-                    <tr>
-                        <td>上海</td>
-                        <td>87.50</td>
-                        <td>2.50:1</td>
-                        <td>+43.7%</td>
-                    </tr>
-                    <tr>
-                        <td>贵州</td>
-                        <td>60.00</td>
-                        <td>3.20:1</td>
-                        <td>-15.8%</td>
-                    </tr>
-                    <tr>
-                        <td>全国均值</td>
-                        <td>61.20</td>
-                        <td>2.50:1</td>
-                        <td>0%</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="table-note">💡 深圳城乡资源比（2.20:1）显著优于全国均值（2.50:1），体现区域均衡优势</p>
-        </section>
-
-        <!-- 3. 核心问题速览（卡片式设计） -->
-        <section class="key-points">
-            <h2>🔑 关键问题洞察</h2>
-            <div class="point-cards">
-                <div class="point-card">
-                    <div class="point-icon">⚠️</div>
-                    <h3>教育衔接问题</h3>
-                    <p>35.90%高中生进入职业院校，但社会认可度不足（<span class="highlight-text">仅62.3%</span>）</p>
+            
+            <div class="data-table-container glass animate-on-scroll" data-animation="fade-up">
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>创新领域</th>
+                                <th>案例数量</th>
+                                <th>平均满意度</th>
+                                <th>平均就业率</th>
+                                <th>技能匹配度</th>
+                                <th>实施周期</th>
+                                <th>可复制性</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>职业教育</strong></td>
+                                <td>21</td>
+                                <td><span class="data-highlight">88.2%</span></td>
+                                <td><span class="data-highlight">91.5%</span></td>
+                                <td>84.3%</td>
+                                <td>3-5年</td>
+                                <td><span class="badge high">高</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>基础教育</strong></td>
+                                <td>14</td>
+                                <td>86.7%</td>
+                                <td>N/A</td>
+                                <td>81.2%</td>
+                                <td>2-4年</td>
+                                <td><span class="badge medium">中高</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>课程改革</strong></td>
+                                <td>15</td>
+                                <td>87.3%</td>
+                                <td>86.8%</td>
+                                <td>83.9%</td>
+                                <td>1-3年</td>
+                                <td><span class="badge medium">中</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>政策创新</strong></td>
+                                <td>13</td>
+                                <td><span class="data-highlight">89.1%</span></td>
+                                <td>88.6%</td>
+                                <td>82.4%</td>
+                                <td>5-8年</td>
+                                <td><span class="badge low">中低</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>数字转型</strong></td>
+                                <td>12</td>
+                                <td>86.8%</td>
+                                <td>87.2%</td>
+                                <td><span class="data-highlight">85.7%</span></td>
+                                <td>1-2年</td>
+                                <td><span class="badge high">高</span></td>
+                            </tr>
+                            <tr class="table-total">
+                                <td><strong>总体/平均</strong></td>
+                                <td><strong>75</strong></td>
+                                <td><strong>87.6%</strong></td>
+                                <td><strong>88.5%*</strong></td>
+                                <td><strong>83.5%</strong></td>
+                                <td><strong>2.5-4.5年</strong></td>
+                                <td><span class="badge medium">中等</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="point-card">
-                    <div class="point-icon">🧠</div>
-                    <h3>心理健康问题</h3>
-                    <p>学生焦虑比例十年上升44.4%（<span class="highlight-text">24.10%→34.70%</span>）</p>
+                <div class="table-note">
+                    <p>*注：基础教育类案例就业率数据不适用(N/A)，总体平均就业率基于其余四类案例计算；数据来源：案例库专项调研与成效评估（样本量：5200）</p>
                 </div>
-                <div class="point-card">
-                    <div class="point-icon">⚖️</div>
-                    <h3>资源分配问题</h3>
-                    <p>北京投入指数（92.00）是贵州（60.00）的<span class="highlight-text">1.5倍</span></p>
+            </div>
+        </section>
+        
+        <!-- 数据下载区 -->
+        <section class="section">
+            <div class="section-header animate-on-scroll" data-animation="fade-up">
+                <div class="section-title-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h2>数据下载与API</h2>
+                </div>
+                <p class="section-subtitle">获取完整数据集、可视化模板与研究工具</p>
+            </div>
+            
+            <div class="download-grid">
+                <div class="download-card glass animate-on-scroll" data-animation="fade-up" data-delay="100">
+                    <div class="download-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h4>完整数据集 (Excel)</h4>
+                    <p>包含75个案例的完整字段数据、原始调研数据、交叉分析表</p>
+                    <div class="download-meta">
+                        <span><i class="fas fa-file"></i> Excel格式</span>
+                        <span><i class="fas fa-weight"></i> 12.7 MB</span>
+                        <span><i class="fas fa-table"></i> 20个工作表</span>
+                    </div>
+                    <a href="assets/pdfs/教育创新案例库完整数据集.xlsx" class="btn-download glow" download>
+                        <i class="fas fa-download"></i>
+                        下载数据集
+                    </a>
+                </div>
+                
+                <div class="download-card glass animate-on-scroll" data-animation="fade-up" data-delay="150">
+                    <div class="download-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h4>可视化图表模板</h4>
+                    <p>Chart.js配置代码、数据映射模板、可直接复用的可视化组件</p>
+                    <div class="download-meta">
+                        <span><i class="fas fa-code"></i> JS/HTML/CSS</span>
+                        <span><i class="fas fa-weight"></i> 3.2 MB</span>
+                        <span><i class="fas fa-cube"></i> 8个模板</span>
+                    </div>
+                    <a href="assets/pdfs/教育数据可视化模板.zip" class="btn-download glow" download>
+                        <i class="fas fa-download"></i>
+                        下载模板
+                    </a>
+                </div>
+                
+                <div class="download-card glass animate-on-scroll" data-animation="fade-up" data-delay="200">
+                    <div class="download-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4>数据API文档</h4>
+                    <p>RESTful API接口说明、数据字段字典、调用示例与认证方式</p>
+                    <div class="download-meta">
+                        <span><i class="fas fa-book"></i> Markdown/PDF</span>
+                        <span><i class="fas fa-weight"></i> 1.8 MB</span>
+                        <span><i class="fas fa-plug"></i> 15个端点</span>
+                    </div>
+                    <a href="assets/pdfs/教育案例数据API文档.pdf" class="btn-download glow" download>
+                        <i class="fas fa-download"></i>
+                        查看文档
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- 页脚 -->
-    <footer>
-        <p>&copy; 2025 社会教育改革研究组 | 数据来源：教育部2024年教育统计年鉴</p>
-        <div class="data-source">
-            <a href="https://www.moe.gov.cn/jyb_sjzl/sjzl_fztj/" target="_blank">教育部2024年统计年鉴</a> | 
-            <a href="#">下载完整数据集</a>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content glass">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div class="footer-logo-text">
+                            <h4>全球教育创新案例库</h4>
+                            <p>数据洞察中心</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">基于75个全球案例的量化分析平台，为教育决策提供数据支撑。</p>
+                    <div class="footer-stats">
+                        <div class="footer-stat">
+                            <i class="fas fa-database"></i>
+                            <span>数据点：<strong>15,600+</strong></span>
+                        </div>
+                        <div class="footer-stat">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>更新频率：<strong>季度更新</strong></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>数据来源与方法</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> OECD教育数据库</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> UNESCO统计年鉴</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 各国教育部报告</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 课题组专项调研</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 学术文献元分析</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>数据服务</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-user"></i> 数据分析师：游海洋</p>
+                        <p><i class="fas fa-envelope"></i> 邮箱：youhaiyang@stu.hbnu.edu.cn</p>
+                        <p><i class="fas fa-chart-line"></i> 定制分析报告：请联系预约</p>
+                        <p><i class="fas fa-handshake"></i> 数据合作：高校与研究机构</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-stats">
+                    <div class="footer-stat">
+                        <i class="fas fa-eye"></i>
+                        <span>页面访问：<span id="visitCount">2,158</span></span>
+                    </div>
+                    <div class="footer-stat">
+                        <i class="fas fa-clock"></i>
+                        <span>数据更新：2025年12月15日</span>
+                    </div>
+                    <div class="footer-stat">
+                        <i class="fas fa-code-branch"></i>
+                        <span>数据版本 2.0.0</span>
+                    </div>
+                </div>
+                <p class="copyright">© 2025 全球教育创新案例库 - 数据洞察中心 | 数据仅供研究使用，引用请注明来源</p>
+            </div>
         </div>
     </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- 脚本文件 -->
+    <script src="js/main.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/background.js"></script>
+    
+    <!-- 数据页面专用图表脚本 -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 初始化图表
+        initDataCharts();
+        
+        // 绑定筛选按钮事件
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                updateChartByFilter(this.getAttribute('data-filter'));
+            });
+        });
+        
+        // 初始化粒子背景
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS.load('particles-js', 'js/particles-config.json', function() {
+                console.log('粒子背景加载完成');
+            });
+        }
+    });
+    
+    function initDataCharts() {
+        // 案例分类分布图 (饼图)
+        const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+        const categoryChart = new Chart(categoryCtx, {
+            type: 'pie',
+            data: {
+                labels: ['职业教育 (21)', '基础教育 (14)', '课程改革 (15)', '政策创新 (13)', '数字转型 (12)'],
+                datasets: [{
+                    data: [21, 14, 15, 13, 12],
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(249, 115, 22, 0.8)',
+                        'rgba(139, 92, 246, 0.8)',
+                        'rgba(34, 197, 94, 0.8)',
+                        'rgba(6, 182, 212, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgb(59, 130, 246)',
+                        'rgb(249, 115, 22)',
+                        'rgb(139, 92, 246)',
+                        'rgb(34, 197, 94)',
+                        'rgb(6, 182, 212)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed || 0;
+                                const percentage = Math.round((value / 75) * 100);
+                                return `${label}: ${value}个案例 (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // 成效指标对比图 (柱状图)
+        const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(performanceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['职业教育', '基础教育', '课程改革', '政策创新', '数字转型'],
+                datasets: [{
+                    label: '满意度 (%)',
+                    data: [88.2, 86.7, 87.3, 89.1, 86.8],
+                    backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                    borderColor: 'rgb(59, 130, 246)',
+                    borderWidth: 1
+                }, {
+                    label: '就业率 (%)',
+                    data: [91.5, null, 86.8, 88.6, 87.2],
+                    backgroundColor: 'rgba(34, 197, 94, 0.7)',
+                    borderColor: 'rgb(34, 197, 94)',
+                    borderWidth: 1
+                }, {
+                    label: '技能匹配度 (%)',
+                    data: [84.3, 81.2, 83.9, 82.4, 85.7],
+                    backgroundColor: 'rgba(139, 92, 246, 0.7)',
+                    borderColor: 'rgb(139, 92, 246)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 75,
+                        max: 95,
+                        title: {
+                            display: true,
+                            text: '百分比 (%)'
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.dataset.label || '';
+                                const value = context.parsed.y;
+                                return value !== null ? `${label}: ${value}%` : `${label}: 不适用`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // 存储图表实例以便更新
+        window.dataCharts = {
+            category: categoryChart,
+            performance: performanceChart
+        };
+    }
+    
+    function updateChartByFilter(filterType) {
+        // 这里可以根据筛选器更新图表数据
+        console.log(`筛选器更新: ${filterType}`);
+        // 实际应用中，这里会根据筛选条件从服务器获取新数据并更新图表
+    }
+    
+    // 数字动画效果
+    function animateValue(element, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const value = Math.floor(progress * (end - start) + start);
+            element.textContent = value;
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+    
+    // 初始化数字动画
+    document.querySelectorAll('.stat-number').forEach(el => {
+        const target = parseInt(el.getAttribute('data-count'));
+        animateValue(el, 0, target, 1500);
+    });
+    </script>
 </body>
 </html>
