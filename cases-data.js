@@ -1,7 +1,6 @@
-// cases-data.js - 独立的案例数据文件
-const allCasesData = [
-    // 原来那45个案例数据（从你主页面的第141-1411行复制过来）const casesData = [
-            {
+// cases-data.js - 案例数据文件
+const casesData = [
+    {
                 id: 1,
                 title: "德国双元制职业教育现代化改革",
                 category: "vocational",
