@@ -779,93 +779,171 @@
                         </div>
                     </section>
 
-                    <!-- 文件下载 -->
+                    <!-- 文件下载 - 简化版本 -->
                     <section id="files" class="content-section files-section">
                         <h2 class="section-title">
                             <i class="fas fa-download"></i>
-                            项目文件
+                            项目文件下载
                         </h2>
                         
-                        <div class="download-banner">
-                            <i class="fas fa-file-archive"></i>
-                            <h3>一键下载全部文件</h3>
-                            <p>包含所有往来邮件、合作协议、评估报告等文件（共[文件数量]个文件，约[文件大小]）</p>
-                            <a href="download/[城市名]项目文件.zip" class="btn-download-all" download>
+                        <!-- 下载说明 -->
+                        <div style="background: #f0f7ff; padding: 20px; border-radius: 10px; margin-bottom: 25px; border-left: 4px solid var(--gov-green);">
+                            <h4 style="color: var(--gov-green); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-info-circle"></i>
+                                下载说明
+                            </h4>
+                            <p style="margin-bottom: 10px; color: #333;">
+                                所有文件均已整理到 <strong>papers</strong> 文件夹中，可直接下载。建议使用下载所有文件功能获取完整资料包。
+                            </p>
+                            <ul style="color: #666; padding-left: 20px;">
+                                <li>点击单个文件直接下载</li>
+                                <li>使用"下载所有文件"获取完整压缩包</li>
+                                <li>文件仅供学习交流参考</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 批量下载 -->
+                        <div style="text-align: center; margin: 30px 0; padding: 25px; background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border-radius: 10px;">
+                            <i class="fas fa-file-archive" style="font-size: 3rem; color: var(--gov-green); margin-bottom: 15px;"></i>
+                            <h3 style="color: var(--gov-green); margin-bottom: 10px;">一键下载所有文件</h3>
+                            <p style="color: #666; margin-bottom: 20px;">包含项目所有相关文件（PDF、Word、Excel等格式）</p>
+                            <a href="papers/晋江市教育合作项目完整资料.zip" class="btn-download-all" download style="display: inline-flex; align-items: center; gap: 10px; background: var(--gov-green); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem;">
                                 <i class="fas fa-download"></i>
-                                下载全部文件 (.zip)
+                                下载所有文件 (.zip)
                             </a>
                         </div>
                         
-                        <div class="file-categories">
-                            <!-- 官方函件 -->
-                            <div class="file-category">
-                                <h4><i class="fas fa-envelope"></i> 官方函件</h4>
-                                <ul class="file-list">
-                                    <li class="file-item">
-                                        <div class="file-info">
-                                            <i class="fas fa-file-pdf file-icon"></i>
-                                            <div class="file-name">关于合作项目的初步意向函.pdf</div>
+                        <!-- 单个文件列表 -->
+                        <div style="display: grid; gap: 15px; margin-top: 30px;">
+                            <!-- 研究论文 -->
+                            <div style="background: #f8f9fa; border-radius: 10px; padding: 20px;">
+                                <h4 style="color: var(--gov-blue); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    研究论文
+                                </h4>
+                                <div style="display: grid; gap: 10px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: white; border-radius: 6px;">
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <i class="fas fa-file-pdf" style="color: #e74c3c;"></i>
+                                            <span>晋江市职业教育改革研究.pdf</span>
                                         </div>
-                                        <div class="file-meta">
-                                            <span class="file-size">1.2 MB</span>
-                                            <span class="file-date">2024-01-15</span>
-                                            <a href="files/初步意向函.pdf" class="btn-download" download>下载</a>
+                                        <a href="papers/晋江市职业教育改革研究.pdf" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                            下载
+                                        </a>
+                                    </div>
+                                    
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: white; border-radius: 6px;">
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <i class="fas fa-file-pdf" style="color: #e74c3c;"></i>
+                                            <span>项目式学习在晋江的实施.pdf</span>
                                         </div>
-                                    </li>
-                                    <li class="file-item">
-                                        <div class="file-info">
-                                            <i class="fas fa-file-pdf file-icon"></i>
-                                            <div class="file-name">合作协议确认函.pdf</div>
-                                        </div>
-                                        <div class="file-meta">
-                                            <span class="file-size">2.1 MB</span>
-                                            <span class="file-date">2024-02-20</span>
-                                            <a href="files/合作协议确认函.pdf" class="btn-download" download>下载</a>
-                                        </div>
-                                    </li>
-                                </ul>
+                                        <a href="papers/项目式学习在晋江的实施.pdf" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                            下载
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <!-- 合作协议 -->
-                            <div class="file-category">
-                                <h4><i class="fas fa-file-contract"></i> 合作协议</h4>
-                                <ul class="file-list">
-                                    <li class="file-item">
-                                        <div class="file-info">
-                                            <i class="fas fa-file-word file-icon"></i>
-                                            <div class="file-name">教育数字化转型合作协议书.docx</div>
+                            <!-- 政策文件 -->
+                            <div style="background: #f8f9fa; border-radius: 10px; padding: 20px;">
+                                <h4 style="color: var(--gov-blue); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-file-contract"></i>
+                                    政策文件
+                                </h4>
+                                <div style="display: grid; gap: 10px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: white; border-radius: 6px;">
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <i class="fas fa-file-word" style="color: #2b579a;"></i>
+                                            <span>晋江市教育合作框架协议.docx</span>
                                         </div>
-                                        <div class="file-meta">
-                                            <span class="file-size">3.5 MB</span>
-                                            <span class="file-date">2024-03-10</span>
-                                            <a href="files/合作协议书.docx" class="btn-download" download>下载</a>
+                                        <a href="papers/晋江市教育合作框架协议.docx" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                            下载
+                                        </a>
+                                    </div>
+                                    
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: white; border-radius: 6px;">
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <i class="fas fa-file-pdf" style="color: #e74c3c;"></i>
+                                            <span>项目实施指导意见.pdf</span>
                                         </div>
-                                    </li>
-                                </ul>
+                                        <a href="papers/项目实施指导意见.pdf" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                            下载
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <!-- 成果报告 -->
-                            <div class="file-category">
-                                <h4><i class="fas fa-chart-bar"></i> 成果报告</h4>
-                                <ul class="file-list">
-                                    <li class="file-item">
-                                        <div class="file-info">
-                                            <i class="fas fa-file-pdf file-icon"></i>
-                                            <div class="file-name">项目中期评估报告.pdf</div>
+                            <!-- 数据报告 -->
+                            <div style="background: #f8f9fa; border-radius: 10px; padding: 20px;">
+                                <h4 style="color: var(--gov-blue); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-chart-bar"></i>
+                                    数据报告
+                                </h4>
+                                <div style="display: grid; gap: 10px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: white; border-radius: 6px;">
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <i class="fas fa-file-excel" style="color: #217346;"></i>
+                                            <span>教育成果数据统计.xlsx</span>
                                         </div>
-                                        <div class="file-meta">
-                                            <span class="file-size">5.2 MB</span>
-                                            <span class="file-date">2024-06-30</span>
-                                            <a href="files/中期评估报告.pdf" class="btn-download" download>下载</a>
+                                        <a href="papers/教育成果数据统计.xlsx" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                            下载
+                                        </a>
+                                    </div>
+                                    
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: white; border-radius: 6px;">
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <i class="fas fa-file-pdf" style="color: #e74c3c;"></i>
+                                            <span>项目评估报告.pdf</span>
                                         </div>
-                                    </li>
-                                </ul>
+                                        <a href="papers/项目评估报告.pdf" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                            下载
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 相关资料 -->
+                            <div style="background: #f8f9fa; border-radius: 10px; padding: 20px;">
+                                <h4 style="color: var(--gov-blue); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-book"></i>
+                                    相关资料
+                                </h4>
+                                <div style="display: grid; gap: 10px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: white; border-radius: 6px;">
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <i class="fas fa-file-archive" style="color: #ff9800;"></i>
+                                            <span>教学案例集.zip</span>
+                                        </div>
+                                        <a href="papers/教学案例集.zip" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                            下载
+                                        </a>
+                                    </div>
+                                    
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: white; border-radius: 6px;">
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <i class="fas fa-file-image" style="color: #4caf50;"></i>
+                                            <span>项目实施照片集.zip</span>
+                                        </div>
+                                        <a href="papers/项目实施照片集.zip" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                            下载
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
-                        <div style="margin-top: 30px; padding: 15px; background: #e3f2fd; border-radius: 8px; font-size: 0.9rem;">
-                            <i class="fas fa-info-circle" style="color: var(--gov-blue); margin-right: 10px;"></i>
-                            说明：所有文件均已脱敏处理，仅用于学习交流。如需原始文件，请通过官方渠道联系相关政府部门。
+                        <!-- 文件准备提示 -->
+                        <div style="margin-top: 30px; padding: 15px; background: #fff8e1; border-radius: 8px; border-left: 4px solid #ffb300;">
+                            <div style="display: flex; align-items: flex-start; gap: 15px;">
+                                <i class="fas fa-clock" style="color: #ffb300; font-size: 1.2rem; margin-top: 3px;"></i>
+                                <div>
+                                    <h5 style="margin: 0 0 8px 0; color: #333;">文件准备说明</h5>
+                                    <p style="margin: 0; color: #666; font-size: 0.95rem;">
+                                        使用说明：将PDF、Word等文件放入 <code>papers</code> 文件夹中，然后修改上方的文件名和链接即可。
+                                        批量下载的ZIP文件需要您手动创建，将所有文件打包为"晋江市教育合作项目完整资料.zip"放入papers文件夹。
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </section>
                 </div>
