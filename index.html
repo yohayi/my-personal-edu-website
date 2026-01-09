@@ -677,11 +677,12 @@
             </div>
         </div>
     </div>
- <!-- 引入外部案例数据文件 -->
+
+    <!-- 引入外部案例数据文件 -->
     <script src="cases-data.js"></script>
 
     <script>
-// 初始化页面
+        // 初始化页面
         document.addEventListener('DOMContentLoaded', function() {
             initPage();
         });
@@ -700,7 +701,6 @@
                 updateCategoryCounts();
                 document.getElementById('loader').classList.remove('active');
             }, 800);
-        }
             
             // 绑定筛选按钮事件
             document.querySelectorAll('.filter-btn').forEach(btn => {
