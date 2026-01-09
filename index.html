@@ -677,15 +677,18 @@
             </div>
         </div>
     </div>
+ <!-- 引入外部案例数据文件 -->
+    <script src="cases-data.js"></script>
 
     <script>
-       
-
-        // 初始化页面
+// 初始化页面
         document.addEventListener('DOMContentLoaded', function() {
             initPage();
         });
-
+        
+        // 注意：这里不再定义 casesData 数组！
+        // 它现在在 cases-data.js 文件中
+        
         // 页面初始化函数
         function initPage() {
             // 显示加载提示
@@ -693,10 +696,11 @@
             
             // 延迟加载案例，模拟网络请求
             setTimeout(() => {
-                renderCases(casesData);
+                renderCases(casesData);  // 这里使用外部文件中的 casesData
                 updateCategoryCounts();
                 document.getElementById('loader').classList.remove('active');
             }, 800);
+        }
             
             // 绑定筛选按钮事件
             document.querySelectorAll('.filter-btn').forEach(btn => {
