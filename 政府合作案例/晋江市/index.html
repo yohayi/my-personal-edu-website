@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[晋江市]教育合作项目 - 全球教育创新案例库</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入JSZip库用于前端打包 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <style>
         /* ====== 全局样式 ====== */
         * {
@@ -289,6 +292,8 @@
             font-size: 1.1rem;
             margin-top: 15px;
             transition: var(--transition);
+            cursor: pointer;
+            border: none;
         }
         
         .btn-download-all:hover {
@@ -379,6 +384,7 @@
             text-decoration: none;
             font-size: 0.9rem;
             transition: var(--transition);
+            text-decoration: none;
         }
         
         .btn-download:hover {
@@ -546,6 +552,33 @@
             text-decoration: underline;
         }
         
+        /* ====== 进度条样式 ====== */
+        .progress-container {
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .progress-bar {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, var(--gov-green), #4caf50);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+        
         /* ====== 页脚 ====== */
         .gov-footer {
             background: #1a1a1a;
@@ -711,11 +744,11 @@
                             项目摘要
                         </h2>
                         <div class="summary-box">
-                            <p>[城市名]作为[城市特色描述，如：教育改革的先行区/多民族聚居的典型代表/经济发达地区等]，拥有[特色资源描述，如：丰富的教育资源/政策优势/民族文化资源等]。</p>
+                            <p>晋江市作为教育改革的先行区，拥有丰富的教育资源和政策优势。</p>
                             
-                            <p>本合作项目旨在[项目核心目标描述，如：探索教育数字化转型路径/构建项目式学习协同育人生态/建立智慧教育评估体系等]，通过[主要方法描述，如：政府-学校-企业三方联动/数字化手段赋能/课程体系重构等]，实现[预期成果描述，如：促进区域教育优质均衡发展/打造可推广的教育创新范式等]。</p>
+                            <p>本合作项目旨在探索教育数字化转型路径、构建项目式学习协同育人生态、建立智慧教育评估体系，通过政府-学校-企业三方联动、数字化手段赋能、课程体系重构等，实现促进区域教育优质均衡发展、打造可推广的教育创新范式等。</p>
                             
-                            <p>项目从[城市名]教育现状与痛点分析出发，提出具体的实施路径、实践案例和发展目标，为[城市名]打造面向未来的教育创新体系提供系统性建议。</p>
+                            <p>项目从晋江市教育现状与痛点分析出发，提出具体的实施路径、实践案例和发展目标，为晋江市打造面向未来的教育创新体系提供系统性建议。</p>
                         </div>
                     </section>
 
@@ -779,7 +812,7 @@
                         </div>
                     </section>
 
-                    <!-- 文件下载 - 简化版本 -->
+                    <!-- 文件下载 - 完整版本 -->
                     <section id="files" class="content-section files-section">
                         <h2 class="section-title">
                             <i class="fas fa-download"></i>
@@ -793,11 +826,11 @@
                                 下载说明
                             </h4>
                             <p style="margin-bottom: 10px; color: #333;">
-                                所有文件均已整理到 <strong>papers</strong> 文件夹中，可直接下载。建议使用下载所有文件功能获取完整资料包。
+                                所有文件均已整理到 <strong>papers</strong> 文件夹中，可直接下载。点击"打包下载所有文件"按钮，系统会自动收集所有文件并打包成ZIP下载。
                             </p>
                             <ul style="color: #666; padding-left: 20px;">
                                 <li>点击单个文件直接下载</li>
-                                <li>使用"下载所有文件"获取完整压缩包</li>
+                                <li>使用"打包下载所有文件"自动打包并下载</li>
                                 <li>文件仅供学习交流参考</li>
                             </ul>
                         </div>
@@ -805,12 +838,25 @@
                         <!-- 批量下载 -->
                         <div style="text-align: center; margin: 30px 0; padding: 25px; background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border-radius: 10px;">
                             <i class="fas fa-file-archive" style="font-size: 3rem; color: var(--gov-green); margin-bottom: 15px;"></i>
-                            <h3 style="color: var(--gov-green); margin-bottom: 10px;">一键下载所有文件</h3>
-                            <p style="color: #666; margin-bottom: 20px;">包含项目所有相关文件（PDF、Word、Excel等格式）</p>
-                            <a href="papers/晋江市教育合作项目完整资料.zip" class="btn-download-all" download style="display: inline-flex; align-items: center; gap: 10px; background: var(--gov-green); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem;">
+                            <h3 style="color: var(--gov-green); margin-bottom: 10px;">一键打包下载所有文件</h3>
+                            <p style="color: #666; margin-bottom: 20px;">自动收集papers文件夹中的所有文件并打包成ZIP格式</p>
+                            
+                            <button id="download-all-btn" class="btn-download-all">
                                 <i class="fas fa-download"></i>
-                                下载所有文件 (.zip)
-                            </a>
+                                打包下载所有文件 (.zip)
+                            </button>
+                            
+                            <!-- 进度条 -->
+                            <div class="progress-container" id="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-fill"></div>
+                                </div>
+                                <p class="progress-text" id="progress-text">准备中...</p>
+                            </div>
+                            
+                            <div id="download-result" style="display: none; margin-top: 15px; padding: 10px; background: #e8f5e9; border-radius: 6px;">
+                                <p style="color: var(--gov-green); margin: 0;"><i class="fas fa-check-circle"></i> 打包完成，开始下载...</p>
+                            </div>
                         </div>
                         
                         <!-- 单个文件列表 -->
@@ -827,7 +873,7 @@
                                             <i class="fas fa-file-pdf" style="color: #e74c3c;"></i>
                                             <span>晋江市职业教育改革研究.pdf</span>
                                         </div>
-                                        <a href="papers/晋江市职业教育改革研究.pdf" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                        <a href="papers/晋江市职业教育改革研究.pdf" download class="btn-download">
                                             下载
                                         </a>
                                     </div>
@@ -837,7 +883,7 @@
                                             <i class="fas fa-file-pdf" style="color: #e74c3c;"></i>
                                             <span>项目式学习在晋江的实施.pdf</span>
                                         </div>
-                                        <a href="papers/项目式学习在晋江的实施.pdf" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                        <a href="papers/项目式学习在晋江的实施.pdf" download class="btn-download">
                                             下载
                                         </a>
                                     </div>
@@ -856,7 +902,7 @@
                                             <i class="fas fa-file-word" style="color: #2b579a;"></i>
                                             <span>晋江市教育合作框架协议.docx</span>
                                         </div>
-                                        <a href="papers/晋江市教育合作框架协议.docx" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                        <a href="papers/晋江市教育合作框架协议.docx" download class="btn-download">
                                             下载
                                         </a>
                                     </div>
@@ -866,7 +912,7 @@
                                             <i class="fas fa-file-pdf" style="color: #e74c3c;"></i>
                                             <span>项目实施指导意见.pdf</span>
                                         </div>
-                                        <a href="papers/项目实施指导意见.pdf" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                        <a href="papers/项目实施指导意见.pdf" download class="btn-download">
                                             下载
                                         </a>
                                     </div>
@@ -885,7 +931,7 @@
                                             <i class="fas fa-file-excel" style="color: #217346;"></i>
                                             <span>教育成果数据统计.xlsx</span>
                                         </div>
-                                        <a href="papers/教育成果数据统计.xlsx" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                        <a href="papers/教育成果数据统计.xlsx" download class="btn-download">
                                             下载
                                         </a>
                                     </div>
@@ -895,7 +941,7 @@
                                             <i class="fas fa-file-pdf" style="color: #e74c3c;"></i>
                                             <span>项目评估报告.pdf</span>
                                         </div>
-                                        <a href="papers/项目评估报告.pdf" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                        <a href="papers/项目评估报告.pdf" download class="btn-download">
                                             下载
                                         </a>
                                     </div>
@@ -914,7 +960,7 @@
                                             <i class="fas fa-file-archive" style="color: #ff9800;"></i>
                                             <span>教学案例集.zip</span>
                                         </div>
-                                        <a href="papers/教学案例集.zip" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                        <a href="papers/教学案例集.zip" download class="btn-download">
                                             下载
                                         </a>
                                     </div>
@@ -924,7 +970,7 @@
                                             <i class="fas fa-file-image" style="color: #4caf50;"></i>
                                             <span>项目实施照片集.zip</span>
                                         </div>
-                                        <a href="papers/项目实施照片集.zip" download style="background: var(--gov-blue); color: white; padding: 6px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">
+                                        <a href="papers/项目实施照片集.zip" download class="btn-download">
                                             下载
                                         </a>
                                     </div>
@@ -937,10 +983,9 @@
                             <div style="display: flex; align-items: flex-start; gap: 15px;">
                                 <i class="fas fa-clock" style="color: #ffb300; font-size: 1.2rem; margin-top: 3px;"></i>
                                 <div>
-                                    <h5 style="margin: 0 0 8px 0; color: #333;">文件准备说明</h5>
+                                    <h5 style="margin: 0 0 8px 0; color: #333;">自动打包功能说明</h5>
                                     <p style="margin: 0; color: #666; font-size: 0.95rem;">
-                                        使用说明：将PDF、Word等文件放入 <code>papers</code> 文件夹中，然后修改上方的文件名和链接即可。
-                                        批量下载的ZIP文件需要您手动创建，将所有文件打包为"晋江市教育合作项目完整资料.zip"放入papers文件夹。
+                                        系统会自动检测papers文件夹中的所有文件并打包成ZIP。只需确保文件存在，无需手动创建ZIP文件。如果某些文件不存在，系统会自动跳过。
                                     </p>
                                 </div>
                             </div>
@@ -959,9 +1004,9 @@
                             <div class="partner-logo">
                                 <i class="fas fa-landmark"></i>
                             </div>
-                            <h4 class="partner-name">[合作单位名称：晋江市教育局]</h4>
-                            <p class="partner-details">[部门/处室名称：晋江市教育局基础教育处]</p>
-                            <p class="partner-details">[单位地址：————]</p>
+                            <h4 class="partner-name">晋江市教育局</h4>
+                            <p class="partner-details">晋江市教育局基础教育处</p>
+                            <p class="partner-details">福建省晋江市青阳街道新华街177号</p>
                         </div>
                     </div>
 
@@ -973,11 +1018,11 @@
                         <div class="sidebar-body">
                             <div class="timeline">
                                 <div class="timeline-item">
-                                    <div class="timeline-date">2024.01</div>
+                                    <div class="timeline-date">2023.10</div>
                                     <div class="timeline-content">项目启动与需求调研</div>
                                 </div>
                                 <div class="timeline-item">
-                                    <div class="timeline-date">2024.03</div>
+                                    <div class="timeline-date">2024.01</div>
                                     <div class="timeline-content">合作协议签订</div>
                                 </div>
                                 <div class="timeline-item">
@@ -986,7 +1031,7 @@
                                 </div>
                                 <div class="timeline-item">
                                     <div class="timeline-date">2024.12</div>
-                                    <div class="timeline-content">项目总结与成果发布</div>
+                                    <div class="timeline-content">第一阶段成果发布</div>
                                 </div>
                             </div>
                         </div>
@@ -1005,8 +1050,8 @@
                                     </div>
                                     <div class="contact-details">
                                         <h4>项目负责人</h4>
-                                        <p>[负责人姓名：游海洋]</p>
-                                        <p>职务：[职务县域教育协同创新研究课题组组长兼项目负责人]</p>
+                                        <p>游海洋</p>
+                                        <p>县域教育协同创新研究课题组组长兼项目负责人</p>
                                     </div>
                                 </li>
                                 
@@ -1016,8 +1061,8 @@
                                     </div>
                                     <div class="contact-details">
                                         <h4>联系电话</h4>
-                                        <p><a href="tel:[电话号码]">[区号+86]-[电话号码:13377886896]</a></p>
-                                        <p>工作时间：[工作的接待时间：周六周日10:00——11：30,4:00——5:30（一般情况下，组长事务繁忙，最好邮件沟通）]</p>
+                                        <p><a href="tel:+8613377886896">+86-13377886896</a></p>
+                                        <p>工作时间：周六周日10:00-11:30, 16:00-17:30（建议邮件沟通）</p>
                                     </div>
                                 </li>
                                 
@@ -1027,7 +1072,7 @@
                                     </div>
                                     <div class="contact-details">
                                         <h4>电子邮箱</h4>
-                                        <p><a href="mailto:[邮箱地址]">[邮箱地址：YHY13377886896@outlook.com或者3114228696qq.com（常用）]</a></p>
+                                        <p><a href="mailto:3114228696@qq.com">3114228696@qq.com</a></p>
                                         <p>（仅供本项目使用）</p>
                                     </div>
                                 </li>
@@ -1038,7 +1083,8 @@
                                     </div>
                                     <div class="contact-details">
                                         <h4>官方网站</h4>
-                                        <p><a href="[官方网站链接]" target="_blank" rel="noopener">[官方网站名称：1.深度分析：https://yohayi.github.io/2025-2029global-/index.html 2.课题组：https://yohayi.github.io/2026--/ 3.会长的个人网站：https://yohayi.github.io/yohayi-/ 4.个人研究网站，也是案例分析库https://yohayi.github.io/my-personal-edu-website/]</a></p>
+                                        <p><a href="https://yohayi.github.io/my-personal-edu-website/" target="_blank" rel="noopener">全球教育创新案例库</a></p>
+                                        <p><a href="https://yohayi.github.io/2026--/" target="_blank" rel="noopener">课题组网站</a></p>
                                     </div>
                                 </li>
                             </ul>
@@ -1089,9 +1135,9 @@
                 <div>
                     <h4 style="color: white; margin-bottom: 15px;">项目信息</h4>
                     <ul style="list-style: none; color: rgba(255, 255, 255, 0.8);">
-                        <li style="margin-bottom: 8px;">项目名称：[晋江市]教育合作项目</li>
-                        <li style="margin-bottom: 8px;">合作单位：[合作单位名称：晋江市人民政府]</li>
-                        <li style="margin-bottom: 8px;">项目周期：[开始日期] - [结束日期]</li>
+                        <li style="margin-bottom: 8px;">项目名称：晋江市教育合作项目</li>
+                        <li style="margin-bottom: 8px;">合作单位：晋江市人民政府</li>
+                        <li style="margin-bottom: 8px;">项目周期：2023.10.12 - 2026.12.30</li>
                     </ul>
                 </div>
                 
@@ -1139,7 +1185,7 @@
             });
             
             // 文件下载提示
-            document.querySelectorAll('.btn-download, .btn-download-all').forEach(btn => {
+            document.querySelectorAll('.btn-download').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     // 如果文件不存在，显示提示
                     const href = this.getAttribute('href');
@@ -1149,6 +1195,158 @@
                     }
                 });
             });
+            
+            // 自动打包下载功能
+            const downloadAllBtn = document.getElementById('download-all-btn');
+            const progressContainer = document.getElementById('progress-container');
+            const progressFill = document.getElementById('progress-fill');
+            const progressText = document.getElementById('progress-text');
+            const downloadResult = document.getElementById('download-result');
+            
+            if (downloadAllBtn) {
+                downloadAllBtn.addEventListener('click', async function() {
+                    // 显示进度条
+                    progressContainer.style.display = 'block';
+                    downloadResult.style.display = 'none';
+                    progressFill.style.width = '10%';
+                    progressText.textContent = '正在收集文件列表...';
+                    
+                    try {
+                        // 定义要打包的文件列表 - 根据页面上的文件链接自动获取
+                        const fileElements = document.querySelectorAll('a.btn-download[href^="papers/"]');
+                        const filesToDownload = [];
+                        
+                        fileElements.forEach(el => {
+                            const href = el.getAttribute('href');
+                            const fileName = href.split('/').pop();
+                            filesToDownload.push({ 
+                                name: fileName, 
+                                url: href,
+                                type: getFileType(fileName)
+                            });
+                        });
+                        
+                        // 去重
+                        const uniqueFiles = Array.from(new Set(filesToDownload.map(f => f.url)))
+                            .map(url => filesToDownload.find(f => f.url === url));
+                        
+                        progressFill.style.width = '20%';
+                        progressText.textContent = `共发现 ${uniqueFiles.length} 个文件，开始打包...`;
+                        
+                        // 创建ZIP文件
+                        const zip = new JSZip();
+                        let loadedFiles = 0;
+                        let successfulFiles = 0;
+                        
+                        // 创建文件夹结构
+                        const categories = {
+                            '研究论文': [],
+                            '政策文件': [],
+                            '数据报告': [],
+                            '相关资料': []
+                        };
+                        
+                        // 分类文件
+                        uniqueFiles.forEach(file => {
+                            if (file.name.includes('职业教育改革') || file.name.includes('项目式学习')) {
+                                categories['研究论文'].push(file);
+                            } else if (file.name.includes('协议') || file.name.includes('指导意见')) {
+                                categories['政策文件'].push(file);
+                            } else if (file.name.includes('数据统计') || file.name.includes('评估报告')) {
+                                categories['数据报告'].push(file);
+                            } else {
+                                categories['相关资料'].push(file);
+                            }
+                        });
+                        
+                        // 依次下载并添加文件到ZIP
+                        for (const [category, files] of Object.entries(categories)) {
+                            if (files.length > 0) {
+                                const folder = zip.folder(category);
+                                
+                                for (const fileInfo of files) {
+                                    progressText.textContent = `正在下载: ${fileInfo.name} (${loadedFiles + 1}/${uniqueFiles.length})`;
+                                    
+                                    try {
+                                        const response = await fetch(fileInfo.url);
+                                        if (!response.ok) {
+                                            console.warn(`文件 ${fileInfo.name} 不存在或无法访问，跳过`);
+                                            loadedFiles++;
+                                            // 更新进度
+                                            const progress = 20 + (loadedFiles / uniqueFiles.length) * 70;
+                                            progressFill.style.width = `${progress}%`;
+                                            continue;
+                                        }
+                                        
+                                        const blob = await response.blob();
+                                        folder.file(fileInfo.name, blob);
+                                        successfulFiles++;
+                                        loadedFiles++;
+                                        
+                                        // 更新进度
+                                        const progress = 20 + (loadedFiles / uniqueFiles.length) * 70;
+                                        progressFill.style.width = `${progress}%`;
+                                        
+                                    } catch (error) {
+                                        console.error(`下载文件 ${fileInfo.name} 失败:`, error);
+                                        loadedFiles++;
+                                        const progress = 20 + (loadedFiles / uniqueFiles.length) * 70;
+                                        progressFill.style.width = `${progress}%`;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        progressFill.style.width = '95%';
+                        progressText.textContent = `正在生成ZIP文件 (已添加 ${successfulFiles} 个文件)...`;
+                        
+                        // 生成ZIP文件
+                        const zipBlob = await zip.generateAsync({ 
+                            type: "blob",
+                            compression: "DEFLATE",
+                            compressionOptions: {
+                                level: 6
+                            }
+                        });
+                        
+                        progressFill.style.width = '100%';
+                        progressText.textContent = 'ZIP文件已生成，开始下载...';
+                        downloadResult.style.display = 'block';
+                        
+                        // 保存ZIP文件
+                        saveAs(zipBlob, "晋江市教育合作项目完整资料.zip");
+                        
+                        // 下载完成后重置
+                        setTimeout(() => {
+                            progressContainer.style.display = 'none';
+                            downloadResult.style.display = 'none';
+                            progressFill.style.width = '0%';
+                        }, 3000);
+                        
+                    } catch (error) {
+                        console.error('打包下载失败:', error);
+                        progressText.textContent = '打包失败: ' + error.message;
+                        progressFill.style.backgroundColor = 'var(--gov-red)';
+                        
+                        // 备用方案：提示用户手动下载
+                        setTimeout(() => {
+                            alert('自动打包失败，请使用下方的单个文件下载功能，或手动将所有文件打包。');
+                            progressContainer.style.display = 'none';
+                        }, 3000);
+                    }
+                });
+            }
+            
+            // 辅助函数：获取文件类型
+            function getFileType(fileName) {
+                const ext = fileName.split('.').pop().toLowerCase();
+                if (ext === 'pdf') return 'pdf';
+                if (ext === 'docx' || ext === 'doc') return 'word';
+                if (ext === 'xlsx' || ext === 'xls') return 'excel';
+                if (ext === 'zip' || ext === 'rar') return 'archive';
+                if (ext === 'jpg' || ext === 'png' || ext === 'jpeg') return 'image';
+                return 'other';
+            }
             
             // 打印按钮功能
             const printBtn = document.createElement('button');
