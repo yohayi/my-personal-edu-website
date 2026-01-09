@@ -705,3 +705,54 @@ a:hover {
         align-items: center;
     }
 }
+/* 政府合作案例特殊样式 */
+.category-government {
+    background: linear-gradient(135deg, #1a5fb4, #0d47a1) !important;
+}
+
+/* 政府合作案例置顶样式 */
+.government-highlight {
+    border: 3px solid #1a5fb4 !important;
+    position: relative;
+    order: -1; /* 放在最前面 */
+}
+
+.government-highlight::before {
+    content: "⭐ 政府合作案例";
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: #ffd700;
+    color: #333;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transform: rotate(15deg);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* 政府合作案例网格容器 */
+.government-section {
+    grid-column: 1 / -1;
+    margin-bottom: 40px;
+}
+
+.government-section h2 {
+    color: #1a5fb4;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #1a5fb4;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.government-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
