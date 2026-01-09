@@ -26,6 +26,8 @@
             --border-radius: 12px;
             --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
+            --government-color: #1a5fb4;
+            --government-light: #e3f2fd;
         }
         
         body {
@@ -129,6 +131,11 @@
             transform: translateY(-2px);
         }
         
+        .filter-btn[data-filter="government"].active,
+        .filter-btn[data-filter="government"]:hover {
+            background: var(--government-color);
+        }
+        
         .filter-count {
             background: rgba(0, 0, 0, 0.1);
             border-radius: 10px;
@@ -165,6 +172,29 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
         
+        /* 政府合作案例特殊样式 */
+        .government-case {
+            border: 2px solid var(--government-color);
+            position: relative;
+        }
+        
+        .government-badge {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: linear-gradient(135deg, #ffd700, #ffb300);
+            color: #333;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            z-index: 1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
         .case-card-header {
             padding: 20px;
             display: flex;
@@ -194,6 +224,7 @@
         .category-curriculum { background: linear-gradient(135deg, #7209b7, #560bad); }
         .category-policy { background: linear-gradient(135deg, #4cc9f0, #4895ef); }
         .category-digital { background: linear-gradient(135deg, #2a9d8f, #21867a); }
+        .category-government { background: linear-gradient(135deg, var(--government-color), #0d47a1); }
         
         .case-content {
             padding: 0 20px 20px;
@@ -223,6 +254,11 @@
             border-left: 4px solid var(--primary-color);
         }
         
+        .government-case .case-impact {
+            background: rgba(26, 95, 180, 0.05);
+            border-left-color: var(--government-color);
+        }
+        
         .impact-title {
             font-weight: 600;
             color: var(--primary-color);
@@ -230,6 +266,10 @@
             display: flex;
             align-items: center;
             gap: 8px;
+        }
+        
+        .government-case .impact-title {
+            color: var(--government-color);
         }
         
         .case-stats {
@@ -246,6 +286,10 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary-color);
+        }
+        
+        .government-case .stat-value {
+            color: var(--government-color);
         }
         
         .stat-label {
@@ -268,6 +312,11 @@
             color: var(--primary-color);
         }
         
+        .government-case .tag {
+            background: rgba(26, 95, 180, 0.1);
+            color: var(--government-color);
+        }
+        
         .case-actions {
             display: flex;
             gap: 10px;
@@ -286,6 +335,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            text-decoration: none;
         }
         
         .detail-btn {
@@ -293,17 +343,51 @@
             color: white;
         }
         
+        .government-case .detail-btn {
+            background: var(--government-color);
+        }
+        
         .compare-btn {
             background: rgba(67, 97, 238, 0.1);
             color: var(--primary-color);
+        }
+        
+        .government-case .compare-btn {
+            background: rgba(26, 95, 180, 0.1);
+            color: var(--government-color);
         }
         
         .detail-btn:hover {
             background: var(--secondary-color);
         }
         
+        .government-case .detail-btn:hover {
+            background: #0d47a1;
+        }
+        
         .compare-btn:hover {
             background: rgba(67, 97, 238, 0.2);
+        }
+        
+        .government-case .compare-btn:hover {
+            background: rgba(26, 95, 180, 0.2);
+        }
+        
+        /* 政府合作专区 */
+        .government-section {
+            grid-column: 1 / -1;
+            margin-bottom: 30px;
+        }
+        
+        .government-section h2 {
+            color: var(--government-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--government-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         /* 页脚 */
@@ -374,6 +458,12 @@
             
             .filter-btn {
                 flex-shrink: 0;
+            }
+            
+            .government-badge {
+                right: 5px;
+                font-size: 0.7rem;
+                padding: 3px 8px;
             }
         }
         
@@ -550,7 +640,7 @@
         <div class="filters">
             <button class="filter-btn active" data-filter="all">
                 <span>全部案例</span>
-                <span class="filter-count" id="count-all">45</span>
+                <span class="filter-count" id="count-all">55</span>
             </button>
             <button class="filter-btn" data-filter="vocational">
                 <i class="fas fa-industry"></i>
@@ -586,7 +676,7 @@
 
         <!-- 案例计数器 -->
         <div class="cases-count">
-            显示 <span class="highlight" id="visible-count">45</span> 个案例中的 <span class="highlight" id="filtered-count">45</span> 个
+            显示 <span class="highlight" id="visible-count">55</span> 个案例中的 <span class="highlight" id="filtered-count">55</span> 个
         </div>
 
         <!-- 案例网格 -->
@@ -692,9 +782,6 @@
             initPage();
         });
         
-        // 注意：这里不再定义 casesData 数组！
-        // 它现在在 cases-data.js 文件中
-        
         // 页面初始化函数
         function initPage() {
             // 显示加载提示
@@ -749,7 +836,49 @@
             
             document.getElementById('noResults').style.display = 'none';
             
-            cases.forEach(caseItem => {
+            // 分离政府合作案例和其他案例
+            const governmentCases = cases.filter(caseItem => caseItem.isGovernment);
+            const otherCases = cases.filter(caseItem => !caseItem.isGovernment);
+            
+            // 如果有政府合作案例，创建专区
+            if (governmentCases.length > 0) {
+                const governmentSection = document.createElement('div');
+                governmentSection.className = 'government-section';
+                governmentSection.innerHTML = `
+                    <h2>
+                        <i class="fas fa-handshake"></i>
+                        政府合作案例专区（${governmentCases.length}个）
+                    </h2>
+                `;
+                
+                casesGrid.appendChild(governmentSection);
+                
+                // 渲染政府合作案例
+                governmentCases.forEach(caseItem => {
+                    const caseCard = createCaseCard(caseItem);
+                    casesGrid.appendChild(caseCard);
+                });
+                
+                // 添加分隔线
+                if (otherCases.length > 0) {
+                    const separator = document.createElement('div');
+                    separator.style.gridColumn = '1 / -1';
+                    separator.style.textAlign = 'center';
+                    separator.style.margin = '30px 0';
+                    separator.style.color = '#666';
+                    separator.innerHTML = `
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+                            <div style="flex: 1; height: 1px; background: #ddd;"></div>
+                            <span>其他国际案例</span>
+                            <div style="flex: 1; height: 1px; background: #ddd;"></div>
+                        </div>
+                    `;
+                    casesGrid.appendChild(separator);
+                }
+            }
+            
+            // 渲染其他案例
+            otherCases.forEach(caseItem => {
                 const caseCard = createCaseCard(caseItem);
                 casesGrid.appendChild(caseCard);
             });
@@ -773,17 +902,36 @@
                 'digital': '数字转型'
             };
             
-            // 设置卡片颜色
-            const colorClass = `category-${caseItem.category}`;
+            // 设置卡片颜色和样式
+            let colorClass;
+            let isGovernment = caseItem.isGovernment;
+            
+            if (isGovernment) {
+                colorClass = 'category-government';
+                card.classList.add('government-case');
+            } else {
+                colorClass = `category-${caseItem.category}`;
+            }
+            
+            // 生成政府合作案例的URL
+            let governmentUrl = '';
+            if (isGovernment) {
+                // 从标题提取城市名
+                const cityMatch = caseItem.title.match(/^(.+?)教育改革深度合作项目/);
+                const cityName = cityMatch ? cityMatch[1] : caseItem.title.replace('教育合作项目', '');
+                governmentUrl = encodeURIComponent(cityName);
+            }
             
             card.innerHTML = `
+                ${isGovernment ? '<div class="government-badge"><i class="fas fa-star"></i>政府合作</div>' : ''}
                 <div class="case-card-header">
                     <div class="case-country">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>${caseItem.country}</span>
+                        ${isGovernment ? `<span style="margin-left: 8px; color: #1a5fb4;"><i class="fas fa-handshake"></i></span>` : ''}
                     </div>
                     <div class="case-category ${colorClass}">
-                        <span>${categoryNames[caseItem.category] || caseItem.category}</span>
+                        <span>${isGovernment ? '政府合作' : (categoryNames[caseItem.category] || caseItem.category)}</span>
                     </div>
                 </div>
                 <div class="case-content">
@@ -792,10 +940,10 @@
                     
                     <div class="case-impact">
                         <div class="impact-title">
-                            <i class="fas fa-chart-line"></i>
-                            <span>主要成效</span>
+                            ${isGovernment ? '<i class="fas fa-university"></i>' : '<i class="fas fa-chart-line"></i>'}
+                            <span>${isGovernment ? '合作单位' : '主要成效'}</span>
                         </div>
-                        <p>${caseItem.impact}</p>
+                        <p>${isGovernment ? (caseItem.cooperationUnit || '政府部门') : caseItem.impact}</p>
                     </div>
                     
                     <div class="case-stats">
@@ -803,10 +951,12 @@
                             <div class="stat-value">${caseItem.stats.satisfaction}%</div>
                             <div class="stat-label">满意度</div>
                         </div>
+                        ${caseItem.stats.employment ? `
                         <div class="stat-item">
-                            <div class="stat-value">${caseItem.stats.employment || 'N/A'}${caseItem.stats.employment ? '%' : ''}</div>
+                            <div class="stat-value">${caseItem.stats.employment}%</div>
                             <div class="stat-label">就业率</div>
                         </div>
+                        ` : ''}
                         <div class="stat-item">
                             <div class="stat-value">${caseItem.stats.skillMatch}%</div>
                             <div class="stat-label">技能匹配</div>
@@ -818,6 +968,16 @@
                     </div>
                     
                     <div class="case-actions">
+                        ${isGovernment ? `
+                        <a href="政府合作案例/${governmentUrl}/index.html" class="detail-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>查看详情</span>
+                        </a>
+                        <a href="政府合作案例/${governmentUrl}/index.html#downloads" class="compare-btn">
+                            <i class="fas fa-download"></i>
+                            <span>下载文件</span>
+                        </a>
+                        ` : `
                         <button class="detail-btn" data-id="${caseItem.id}">
                             <i class="fas fa-search"></i>
                             <span>查看详情</span>
@@ -826,21 +986,26 @@
                             <i class="fas fa-balance-scale"></i>
                             <span>加入对比</span>
                         </button>
+                        `}
                     </div>
                 </div>
             `;
             
-            // 绑定查看详情事件
-            card.querySelector('.detail-btn').addEventListener('click', function() {
-                const caseId = parseInt(this.getAttribute('data-id'));
-                showCaseDetail(caseId);
-            });
+            // 绑定查看详情事件（非政府合作案例）
+            if (!isGovernment) {
+                card.querySelector('.detail-btn').addEventListener('click', function() {
+                    const caseId = parseInt(this.getAttribute('data-id'));
+                    showCaseDetail(caseId);
+                });
+            }
             
-            // 绑定加入对比事件
-            card.querySelector('.compare-btn').addEventListener('click', function() {
-                const caseId = parseInt(this.getAttribute('data-id'));
-                addToComparison(caseId);
-            });
+            // 绑定加入对比事件（非政府合作案例）
+            if (!isGovernment) {
+                card.querySelector('.compare-btn').addEventListener('click', function() {
+                    const caseId = parseInt(this.getAttribute('data-id'));
+                    addToComparison(caseId);
+                });
+            }
             
             return card;
         }
@@ -851,7 +1016,11 @@
             
             if (category === 'all') {
                 filteredCases = casesData;
+            } else if (category === 'government') {
+                // 政府合作案例筛选
+                filteredCases = casesData.filter(caseItem => caseItem.isGovernment);
             } else {
+                // 其他分类筛选
                 filteredCases = casesData.filter(caseItem => caseItem.category === category);
             }
             
@@ -877,6 +1046,8 @@
             let filteredCases;
             if (activeFilter === 'all') {
                 filteredCases = casesData;
+            } else if (activeFilter === 'government') {
+                filteredCases = casesData.filter(caseItem => caseItem.isGovernment);
             } else {
                 filteredCases = casesData.filter(caseItem => caseItem.category === activeFilter);
             }
@@ -886,7 +1057,8 @@
                 return caseItem.title.toLowerCase().includes(query) ||
                        caseItem.description.toLowerCase().includes(query) ||
                        caseItem.country.toLowerCase().includes(query) ||
-                       caseItem.tags.some(tag => tag.toLowerCase().includes(query));
+                       caseItem.tags.some(tag => tag.toLowerCase().includes(query)) ||
+                       (caseItem.cooperationUnit && caseItem.cooperationUnit.toLowerCase().includes(query));
             });
             
             renderCases(searchResults);
@@ -896,6 +1068,9 @@
         function showCaseDetail(caseId) {
             const caseItem = casesData.find(c => c.id === caseId);
             if (!caseItem) return;
+            
+            // 政府合作案例不显示模态框，已跳转到独立页面
+            if (caseItem.isGovernment) return;
             
             // 获取分类显示名称
             const categoryNames = {
@@ -956,6 +1131,10 @@
                 const count = casesData.filter(caseItem => caseItem.category === category).length;
                 document.getElementById(`count-${category}`).textContent = count;
             });
+            
+            // 更新政府合作计数
+            const governmentCount = casesData.filter(caseItem => caseItem.isGovernment).length;
+            document.getElementById('count-government').textContent = governmentCount;
             
             // 更新全部计数
             document.getElementById('count-all').textContent = casesData.length;
